@@ -1,5 +1,5 @@
-import type { FC, PropsWithChildren } from "hono/jsx";
 import { globalCss } from "@styles/global";
+import type { FC, PropsWithChildren } from "hono/jsx";
 
 export const Layout: FC = (props: PropsWithChildren) => {
   return (
