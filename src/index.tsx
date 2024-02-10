@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { Style, css } from "hono/css";
-import { Layout } from "./Layout";
+import { Layout } from "@layouts/Layout";
 
 const app = new Hono();
 
