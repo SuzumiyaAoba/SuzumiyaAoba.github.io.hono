@@ -1,14 +1,21 @@
+import { css } from "@twind/core";
 import type { FC } from "hono/jsx";
 
-type Props = {
+export const Header: FC<{
   siteName: string;
-};
+}> = (props) => {
+  const titleCss = css`
+    font-family: "Oswald", sans-serif;
+    @apply font-bold text-2xl;
+    @apply no-underline;
+  `;
 
-export const Header: FC<Props> = (props) => {
   return (
     <header className="max-w-3xl mx-auto my-2 px-4 w-full">
-      <div className="text-2xl">
-        <a href="/">{props.siteName}</a>
+      <div>
+        <a class={titleCss} href="/">
+          {props.siteName}
+        </a>
       </div>
     </header>
   );

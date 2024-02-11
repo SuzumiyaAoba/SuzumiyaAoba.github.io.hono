@@ -3,16 +3,14 @@ import type { FC } from "hono/jsx";
 
 import type { DeepReadonly } from "ts-essentials";
 
-type Props = {
+export const GoogleFonts: FC<{
   fonts: DeepReadonly<
     {
       name: string;
       weight: number[];
     }[]
   >;
-};
-
-export const GoogleFonts: FC<Props> = memo(({ fonts }) => {
+}> = memo(({ fonts }) => {
   const familyQuery = fonts
     .map((font) => {
       const weight = font.weight.join(";");

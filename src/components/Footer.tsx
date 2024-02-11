@@ -1,14 +1,14 @@
 import type { FC } from "hono/jsx";
 
-type Props = {
+export const Footer: FC<{
   copyright: string;
-};
-
-export const Footer: FC<Props> = ({ copyright }) => {
+}> = ({ copyright }) => {
   return (
     <footer class="w-auto mx-auto my-8 text-center">
-      &copy; 2023 {copyright}
-      Powered by <a href="https://hono.dev/">Hono</a>
+      <div>&copy; 2023 {copyright}</div>
+      <div>
+        Powered by <a href="https://hono.dev/">Hono</a>
+      </div>
     </footer>
   );
 };
