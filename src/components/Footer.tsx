@@ -4,7 +4,7 @@ export const Footer: FC<{
   copyright: string;
 }> = ({ copyright }) => {
   return (
-    <footer class="w-auto mx-auto my-8 text-center">
+    <footer className="w-auto mx-auto my-8 text-center">
       <div>&copy; 2023 {copyright}</div>
       <div>
         Powered by <a href="https://hono.dev/">Hono</a>
