@@ -1,12 +1,14 @@
 import { Hono } from "hono";
-import { Style, css } from "hono/css";
+import { css } from "hono/css";
 
 import { Header } from "@components/Header";
+import { Html } from "@layouts/Html";
 import { Layout } from "@layouts/Layout";
+import { globalCss } from "@styles/global";
 
+import { tailwindStyleTagInjector } from "@styles/twind.ts";
 import presetAutoprefix from "@twind/preset-autoprefix";
 import presetTailwind from "@twind/preset-tailwind";
-import { tailwindStyleTagInjector } from "./twind.ts";
 
 const app = new Hono();
 
@@ -21,15 +23,12 @@ app.get("/", (c) => {
   const headerClass = css``;
 
   return c.html(
-    <Layout>
-      <head>
-        <Style />
-      </head>
-      <body>
+    <Html globalCss={globalCss}>
+      <Layout>
         <Header siteName="All You Need is ..." />
         <h1 class={headerClass}>Hello!</h1>
-      </body>
-    </Layout>,
+      </Layout>
+    </Html>,
   );
 });
 

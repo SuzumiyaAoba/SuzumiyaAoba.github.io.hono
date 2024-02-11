@@ -1,8 +1,20 @@
-import { type TwindConfig, inline, install } from "@twind/core";
+import {
+  type BaseTheme,
+  type Preset,
+  type TwindUserConfig,
+  inline,
+  install,
+} from "@twind/core";
 import { createMiddleware } from "hono/factory";
 
 // see: https://techblog.raksul.com/entry/2023/11/08/173335
-export const tailwindStyleTagInjector = (config: TwindConfig) => {
+export const tailwindStyleTagInjector = <
+  Theme extends BaseTheme,
+  // biome-ignore lint/suspicious/noExplicitAny: type of external library
+  Presets extends Preset<any>[] = Preset[],
+>(
+  config: TwindUserConfig<Theme, Presets>,
+) => {
   install(config);
 
   return createMiddleware(async (c, next) => {

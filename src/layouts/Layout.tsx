@@ -1,12 +1,22 @@
-import { globalCss } from "@styles/global";
-import type { FC, PropsWithChildren } from "hono/jsx";
+import { metadata } from "@metadata";
 
-export const Layout: FC = (props: PropsWithChildren) => {
+import type { FC, PropsWithChildren } from "hono/jsx";
+import { Style } from "hono/css";
+
+import { partytownSnippet } from "@builder.io/partytown/integration";
+import { GoogleFonts } from "@components/GoogleFonts";
+
+export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <html lang="ja" class={globalCss}>
-        {props.children}
-      </html>
+      <head>
+        <Style />
+        <GoogleFonts fonts={metadata.googleFonts} />
+        <script>
+          {partytownSnippet()}
+        </script>
+      </head>
+      <body>{children}</body>
     </>
   );
 };
