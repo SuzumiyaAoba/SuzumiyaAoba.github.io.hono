@@ -19,6 +19,9 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         <GoogleFonts fonts={metadata.googleFonts} />
         <Partytown />
         <GoogleAnalytics tagId={metadata.googleAnalytics.tagId} />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+        <link rel="stylesheet" href="/assets/css/starry-night/index.css" />
+        <link rel="stylesheet" href="/assets/css/starry-night/light.css" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header siteName={metadata.siteName} />

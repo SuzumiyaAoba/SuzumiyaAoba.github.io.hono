@@ -5,8 +5,10 @@ import { css } from "@twind/core";
 
 import { PostListItem } from "@components/PostListItem";
 
-export const Home: FC = async () => {
-  const posts = await getPosts("./content/blog");
+export const HomePage: FC = async () => {
+  const posts = (await getPosts("./content/blog"))
+    .toArray()
+    .sort((a, b) => a.slug < b.slug ? 1 : -1);
 
   const mainCss = css`
     @apply flex-grow;
@@ -24,7 +26,7 @@ export const Home: FC = async () => {
       <h2>ブログ</h2>
       <div>
         <ul class={postsCss}>
-          {posts.map((post) => <PostListItem post={post} />).toArray()}
+          {posts.map((post) => <PostListItem post={post} />)}
         </ul>
       </div>
     </main>
