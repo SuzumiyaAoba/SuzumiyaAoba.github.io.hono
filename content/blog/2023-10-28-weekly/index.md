@@ -5,8 +5,6 @@ tags: ["週報"]
 draft: false
 ---
 
-import { YouTube } from "@astro-community/astro-embed-youtube";
-
 ## プロローグ
 
 ブログを作り始めてみたもののこれと言って書くことがないので毎回継続することができない。
@@ -19,7 +17,7 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
 また、毎回おすすめの YouTube の動画を一つ貼ることにする。
 今回はなちょ猫の『てねてね』歌ってみた動画。
 
-<YouTube id="1CQjWtqFSc4" />
+<lite-youtube videoid="1CQjWtqFSc4"></lite-youtube>
 
 ## ガジェット
 
@@ -30,11 +28,11 @@ DIJ から Osmo Pocket 2 の後継機にあたる [Osmo Pocket 3](https://www.dj
 Osmo Pocket 3 は 1 インチと大きく進化している。
 写真やカメラの撮影は勿論のこと Vlog にも興味がないけど、レビュー動画を見ていてこの大きさでここまで綺麗な動画が取れるようになっているのかと驚いた。
 
-<YouTube id="yLFpjIC_i88" />
+<lite-youtube videoid="yLFpjIC_i88"></lite-youtube>
 
 夜の撮影を見てもかなり明るい。
 
-<YouTube id="nL0zLQZiUBQ" />
+<lite-youtube videoid="nL0zLQZiUBQ"></lite-youtube>
 
 この大きさであればどこかに出かけたときに持ち歩くのも苦ではないし、
 かなり良さそうな製品に感じた。
@@ -50,7 +48,7 @@ Arya Organic は 20 万円くらいなので半年ほどお金を貯めれば買
 寄り道をせずにこちらを買った方がいいのではないかという思いが強い。
 価格が 3倍 以上なのでおいそれと買えるようなものではない。
 
-<YouTube id="E6qOoiJmzqU" />
+<lite-youtube videoid="E6qOoiJmzqU"></lite-youtube>
 
 ### Fiio R7
 
@@ -93,6 +91,7 @@ Amazon Music や NAS に保存している音楽を再生するには PC かス�
     allowfullscreen="true"
     style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;"
     data-ratio="1.7777777777777777"
+    loading="lazy"
   ></iframe>
 </center>
 
@@ -117,6 +116,7 @@ CI 平均 5 分はいい話。業務で触っているシステムもこのレ�
     allowfullscreen="true"
     style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;"
     data-ratio="1.7777777777777777"
+    loading="lazy"
   ></iframe>
 </center>
 
@@ -131,6 +131,7 @@ CI 平均 5 分はいい話。業務で触っているシステムもこのレ�
     allowfullscreen="true"
     style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;"
     data-ratio="1.7777777777777777"
+    loading="lazy"
   ></iframe>
 </center>
 
@@ -147,6 +148,7 @@ CI 平均 5 分はいい話。業務で触っているシステムもこのレ�
     allowfullscreen="true"
     style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;"
     data-ratio="1.7777777777777777"
+    loading="lazy"
   ></iframe>
 </center>
 

@@ -5,8 +5,6 @@ tags: ["自作キーボード", "キーボード"]
 draft: false
 ---
 
-import { YouTube } from "@astro-community/astro-embed-youtube";
-
 引きこもりはクリスマス・イヴに何をするのか。
 そう、自作キーボードを組み立てます。
 24、25日は [ErgoDash](https://shop.yushakobo.jp/products/ergodash) を組み立てました。
@@ -134,7 +132,7 @@ Pro Micro のコンスルーをはんだ付けしてファームウェアを焼�
 
 調べと Rev. 8 まで出ているようだけど、Rev. 5 以降は国内だと海外輸入しかないですかね。
 
-<YouTube id="wkuL4u3ZAP4" />
+<lite-youtube videoid="wkuL4u3ZAP4"></lite-youtube>
 
 Iris も気になっていますが、このサイズ感のキーボードはこれ以上組み立てても使わなそうなので次回は [Corne Cherry V3](https://shop.yushakobo.jp/products/corne-cherry-v3?_pos=3&_sid=8729bdb07&_ss=r) を組み立てます。
 [Corchim](https://kbd.arashike.com/corchim) を衝動買いしてしまったので、基盤の方を売り切れる前に手に入れておかないと…。

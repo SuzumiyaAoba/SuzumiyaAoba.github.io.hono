@@ -5,8 +5,6 @@ tags: ["キーボード"]
 draft: false
 ---
 
-import { YouTube } from "@astro-community/astro-embed-youtube";
-
 ## 今年何個目のキーボードだろう…
 
 [GREENFUNDING](https://greenfunding.jp/) で 9 月頃にクラファンしていた
@@ -31,7 +29,7 @@ Lofree FLOW の特徴は以下の 6 つだろう。
 
 といった特徴もあるが、ラインナップが少ないので購入を検討する上で有利には働かないだろう。
 
-<YouTube id="HCw8AGpNqVU" />
+<lite-youtube videoid="HCw8AGpNqVU"></lite-youtube>
 
 今回購入したのはリニアスイッチ。
 キースイッチが黒い方はタクタイルなのでメカニカル感を感じたい方はそちらを購入することになると思います。
@@ -65,7 +63,7 @@ Lofrfee FLOW の[公式サイト](https://www.lofree.co/ja/products/lofree-flow-
 恐らく対抗馬としてはこのキーボードになるのではないだろうか。
 NuPhy はよく話題に上がるし、売れているキーボードだからこの記事を読んでくれている人で持っている人は多いのではないだろうか。
 
-<YouTube id="zar71YrO-W4" />
+<lite-youtube videoid="zar71YrO-W4"></lite-youtube>
 
 ### 良い点
 

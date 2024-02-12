@@ -5,14 +5,12 @@ tags: ["週報"]
 draft: false
 ---
 
-import { YouTube } from "@astro-community/astro-embed-youtube";
-
 ## 今週の動画
 
 一時期 YouTube の CM で流れていた気がする P 丸様の MOTTAI。
 P 丸様のライブ映像だとメンタルチェンソーが好きなので来週はそれを貼ろうかな。
 
-<YouTube id="59dHJiIiPhA" />
+<lite-youtube videoid="59dHJiIiPhA"></lite-youtube>
 
 ## ガジェット
 
@@ -23,7 +21,7 @@ P 丸様のライブ映像だとメンタルチェンソーが好きなので来
 Pro と Max は発表だけに留めて搭載された製品の登場は
 もう少し先になると思っていたから驚いた。
 
-<YouTube id="ctkW3V0Mh-k" />
+<lite-youtube videoid="ctkW3V0Mh-k"></lite-youtube>
 
 ### HIFIMAN ヘッドフォンアンプ
 

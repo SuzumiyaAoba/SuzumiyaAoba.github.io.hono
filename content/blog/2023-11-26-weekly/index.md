@@ -5,8 +5,6 @@ tags: ["週報"]
 draft: false
 ---
 
-import { YouTube } from "@astro-community/astro-embed-youtube";
-
 ## 今週の動画
 
 先週はキーボードを作っていて週報をサボってしまった。

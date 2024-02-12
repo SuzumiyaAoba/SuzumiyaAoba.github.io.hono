@@ -5,14 +5,12 @@ tags: ["週報"]
 draft: false
 ---
 
-import { YouTube } from "@astro-community/astro-embed-youtube";
-
 ## 今週の動画
 
 前回の予告と違う動画になってしまうけど、はんだづけのやり方の解説動画を見たので載せる。
 わかりやすかったし、記事の本文にも書くけど自作キーボードを始めるのに参考になりそうだった。
 
-<YouTube id="dQ7AUjb1tkA" />
+<lite-youtube videoid="dQ7AUjb1tkA"></lite-youtube>
 
 ## [UnJS にどんなツールがあるのか、上位30件すべて紹介してみた](https://zenn.dev/ytr0903/articles/c6c42147ed29be?utm_source=pocket_saves)
 
