@@ -11,7 +11,7 @@ const app = new Hono();
 
 app.use("*", tailwindStyleTagInjector(twindConfig));
 
-app.get("/", (c) => {
+app.get("/", async (c) => {
   return c.html(
     <Html globalCss={globalCss}>
       <Layout>

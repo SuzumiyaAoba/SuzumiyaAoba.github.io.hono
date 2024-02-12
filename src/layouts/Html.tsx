@@ -3,7 +3,7 @@ import type { FC, PropsWithChildren } from "hono/jsx";
 
 export const Html: FC<
   PropsWithChildren<{
-    globalCss: Promise<string>;
+    globalCss: string | Promise<string>;
   }>
 > = ({ globalCss, children }) => {
   return html`<!DOCTYPE html>${(

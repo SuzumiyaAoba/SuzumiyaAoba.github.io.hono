@@ -12,6 +12,9 @@
       },
       "nursery": {
         "useImportRestrictions": "off"
+      },
+      "complexity": {
+        "useLiteralKeys": "off"
       }
     }
   },
