@@ -5,7 +5,7 @@
     "prepare": "husky",
     "dev": "vite",
     "preview": "vite preview",
-    "build": "tsc --noEmit && vite build",
+    "build": "rimraf ./dist && tsc --noEmit && vite build",
     "format": "bunx @biomejs/biome check --apply .",
     "lint": "bunx @biomejs/biome check ."
   },
