@@ -7,7 +7,7 @@ import type { Post } from "@repositories/blog";
 export const PostListItem: FC<{
   post: Post;
 }> = async ({ post }) => {
-  const content = await post.content();
+  const content = post.content;
 
   return (
     <li className="flex mb-8 after:content-['']">

@@ -7,7 +7,7 @@ import { Iterator } from "iterator-helpers-polyfill";
 export type Post = {
   id: string;
   slug: string;
-  content: () => Promise<Markdown>;
+  content: Markdown;
 };
 
 const dirFormat = /(?<dateStr>\d+-\d+-\d+)-(?<id>.+)/;
@@ -36,18 +36,28 @@ export const parseMarkdown = async (dir: string): Promise<Markdown> => {
   return markdown.parseMarkdown(path);
 };
 
-export const parsePostDir = (root: string, dir: string): Post => {
+export const parsePostDir = async (
+  root: string,
+  dir: string,
+): Promise<Post> => {
+  const content = await parseMarkdown(path.resolve(root, dir));
+
   return {
     id: dir,
     slug: `/blog/${dir}/`,
-    content: () => parseMarkdown(path.resolve(root, dir)),
+    content: content,
   };
 };
 
 export const getPosts = async (root: string) => {
-  return Iterator.from(fs.readdirSync(root))
-    .filter(isValidPostDir)
-    .map((dir) => parsePostDir(root, dir));
+  const posts = await Promise.all(
+    Iterator.from(fs.readdirSync(root))
+      .filter(isValidPostDir)
+      .map((dir) => parsePostDir(root, dir))
+      .toArray(),
+  );
+
+  return Iterator.from(posts).filter((post) => !post.content.frontmatter.draft);
 };
 
 export const getPost = async (root: string, id: string) => {
