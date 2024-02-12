@@ -1,5 +1,5 @@
+import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
-import { serveStatic } from '@hono/node-server/serve-static'
 import { ssgParams } from "hono/ssg";
 
 import { Html } from "@layouts/Html";
@@ -16,7 +16,7 @@ const app = new Hono();
 
 app.use("*", tailwindStyleTagInjector(twindConfig));
 
-app.use('/assets/*', serveStatic({ root: './public' }))
+app.use("/assets/*", serveStatic({ root: "./public" }));
 
 app.get("/", async (c) => {
   return c.html(

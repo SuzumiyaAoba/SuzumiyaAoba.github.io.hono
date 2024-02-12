@@ -19,7 +19,6 @@ const isValidPostDir = (dir: string): boolean => {
 const detectMarkdown = (dir: string): string | undefined => {
   const indexMd = path.resolve(process.cwd(), dir, "index.md");
   const indexMdx = path.resolve(process.cwd(), dir, "index.mdx");
-
   return fs.existsSync(indexMd)
     ? indexMd
     : fs.existsSync(indexMdx)

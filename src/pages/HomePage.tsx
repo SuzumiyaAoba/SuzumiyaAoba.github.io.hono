@@ -8,7 +8,7 @@ import { PostListItem } from "@components/PostListItem";
 export const HomePage: FC = async () => {
   const posts = (await getPosts("./content/blog"))
     .toArray()
-    .sort((a, b) => a.slug < b.slug ? 1 : -1);
+    .sort((a, b) => (a.slug < b.slug ? 1 : -1));
 
   const mainCss = css`
     @apply flex-grow;
@@ -26,7 +26,9 @@ export const HomePage: FC = async () => {
       <h2>ブログ</h2>
       <div>
         <ul class={postsCss}>
-          {posts.map((post) => <PostListItem post={post} />)}
+          {posts.map((post) => (
+            <PostListItem post={post} />
+          ))}
         </ul>
       </div>
     </main>
