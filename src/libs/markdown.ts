@@ -10,6 +10,7 @@ import remarkJoinCjkLines from "remark-join-cjk-lines";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import rehypePicture from "rehype-picture";
 import { unified } from "unified";
 
 const processor = unified()
@@ -18,6 +19,10 @@ const processor = unified()
   .use(remarkGfm)
   .use(remarkJoinCjkLines)
   .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypePicture, {
+    jpg: { webp: "image/webp" },
+    png: { webp: "image/webp" }
+  })
   .use(rehypeKatex)
   .use(rehypeStarryNight)
   .use(rehypeStringify, { allowDangerousHtml: true });
