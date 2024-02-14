@@ -26,7 +26,10 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         <link rel="stylesheet" href="/assets/css/starry-night/index.css" />
         <link rel="stylesheet" href="/assets/css/starry-night/light.css" />
 
-        <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
+        <script
+          type="module"
+          src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"
+        />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header siteName={metadata.siteName} />

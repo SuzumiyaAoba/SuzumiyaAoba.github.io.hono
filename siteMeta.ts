@@ -1,5 +1,5 @@
 export const metadata = {
-  siteName: "All You Need Is ...",
+  siteName: "Doing My Share",
   copyright: "SuzumiyaAoba",
   social: {
     twitter: "SuzumiyaAoba",

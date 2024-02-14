@@ -6,8 +6,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [
-    ssg(),
     tsconfigPaths(),
+    ssg(),
     devServer({
       entry: "src/index.tsx",
     }),

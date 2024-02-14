@@ -4,13 +4,13 @@ import { z } from "zod";
 
 import rehypeStarryNight from "@microflash/rehype-starry-night";
 import rehypeKatex from "rehype-katex";
+import rehypePicture from "rehype-picture";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkJoinCjkLines from "remark-join-cjk-lines";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import rehypePicture from "rehype-picture";
 import { unified } from "unified";
 
 const processor = unified()
@@ -21,7 +21,7 @@ const processor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypePicture, {
     jpg: { webp: "image/webp" },
-    png: { webp: "image/webp" }
+    png: { webp: "image/webp" },
   })
   .use(rehypeKatex)
   .use(rehypeStarryNight)
@@ -31,6 +31,7 @@ export type Markdown = {
   frontmatter: Frontmatter;
   content: string;
   html: string;
+  path: string | undefined;
 };
 
 const frontmatterSchema = z.object({
@@ -53,5 +54,6 @@ export const parseMarkdown = async (path: string): Promise<Markdown> => {
     frontmatter,
     content,
     html,
+    path,
   };
 };
