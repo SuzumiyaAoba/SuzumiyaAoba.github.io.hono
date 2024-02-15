@@ -1,3 +1,4 @@
+import {globSync} from "glob";
 import devServer from "@hono/vite-dev-server";
 import { defaultOptions } from "@hono/vite-dev-server";
 import ssg from "@hono/vite-ssg";
@@ -7,7 +8,7 @@ import sharp from "sharp";
 import { defineConfig } from "vite";
 import VitePluginBrowserSync from "vite-plugin-browser-sync";
 import tsconfigPaths from "vite-tsconfig-paths";
-import Markdown from "vite-plugin-md";
+
 
 const imageTarget: (options: {
   src: string;
@@ -39,7 +40,6 @@ export default defineConfig({
     }
   },
   plugins: [
-    Markdown(),
     copy({
       targets: [
         blogImageTarget({ format: "webp" }),
@@ -56,5 +56,14 @@ export default defineConfig({
     }),
     VitePluginBrowserSync(),
     ssg(),
+    {
+      name: 'watch-external',
+      async buildStart(){
+        const files = globSync("content/**/*.md");
+        for(let file of files){
+          this.addWatchFile(file);
+        }
+      }
+    }
   ],
 });

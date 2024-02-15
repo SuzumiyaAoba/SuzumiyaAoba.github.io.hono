@@ -4,7 +4,7 @@
   "scripts": {
     "prepare": "husky",
     "dev": "vite",
-    "preview:watch": "concurrently 'vite preview' 'vite build --watch'",
+    "preview:watch": "concurrently 'vite build --watch' 'vite preview'",
     "preview": "vite preview",
     "build": "rimraf ./dist && tsc --noEmit && vite build",
     "format": "bunx @biomejs/biome check --apply .",
