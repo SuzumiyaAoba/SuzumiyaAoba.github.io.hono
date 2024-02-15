@@ -1,6 +1,9 @@
 # Hono
 .hono/
 
+# public
+public/blog/
+
 # Created by https://www.toptal.com/developers/gitignore/api/node,emacs
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,emacs
 

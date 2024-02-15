@@ -4,6 +4,7 @@
   "scripts": {
     "prepare": "husky",
     "dev": "vite",
+    "preview:watch": "concurrently 'vite preview' 'vite build --watch'",
     "preview": "vite preview",
     "build": "rimraf ./dist && tsc --noEmit && vite build",
     "format": "bunx @biomejs/biome check --apply .",
@@ -30,6 +31,7 @@
     "remark-math": "^6.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.0",
+    "rollup-plugin-copy": "^3.5.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -39,6 +41,7 @@
     "@tsconfig/strictest": "^2.0.3",
     "@types/node": "^20.11.17",
     "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
     "glob": "^10.3.10",
     "husky": "^9.0.10",
     "lint-staged": "^15.2.2",
