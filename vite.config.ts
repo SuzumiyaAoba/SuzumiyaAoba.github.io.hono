@@ -40,6 +40,22 @@ export default defineConfig({
     }
   },
   plugins: [
+    tsconfigPaths(),
+    devServer({
+      entry: "src/index.tsx",
+      exclude: [/^\/blog\/.+\.(webp|png|jpg|jpeg)$/, ...defaultOptions.exclude],
+    }),
+    VitePluginBrowserSync(),
+    {
+      name: 'watch-external',
+      async buildStart(){
+        const files = globSync("content/**/*.md");
+        for(let file of files){
+          this.addWatchFile(file);
+        }
+      }
+    },
+    ssg(),
     copy({
       targets: [
         blogImageTarget({ format: "webp" }),
@@ -49,21 +65,5 @@ export default defineConfig({
       verbose: true,
       hook: "buildStart",
     }),
-    tsconfigPaths(),
-    devServer({
-      entry: "src/index.tsx",
-      exclude: [/^\/blog\/.+\.(webp|png|jpg|jpeg)$/, ...defaultOptions.exclude],
-    }),
-    VitePluginBrowserSync(),
-    ssg(),
-    {
-      name: 'watch-external',
-      async buildStart(){
-        const files = globSync("content/**/*.md");
-        for(let file of files){
-          this.addWatchFile(file);
-        }
-      }
-    }
   ],
 });
