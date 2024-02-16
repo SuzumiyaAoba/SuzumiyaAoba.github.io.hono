@@ -55,7 +55,6 @@ export default defineConfig({
         }
       }
     },
-    ssg(),
     copy({
       targets: [
         blogImageTarget({ format: "webp" }),
@@ -63,7 +62,8 @@ export default defineConfig({
       ],
       flatten: false,
       verbose: true,
-      hook: "buildStart",
+      hook: "options",
     }),
+    ssg(),
   ],
 });
