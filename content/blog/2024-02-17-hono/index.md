@@ -133,7 +133,7 @@ export default defineConfig({
 
 このサイトでは以下のようなディレクトリ構造で管理している。
 
-```text
+```shell
 .
 ├── content
 │   └── blog
