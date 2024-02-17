@@ -6,6 +6,7 @@ import rehypeStarryNight from "@microflash/rehype-starry-night";
 import rehypeKatex from "rehype-katex";
 import rehypePicture from "rehype-picture";
 import rehypeStringify from "rehype-stringify";
+import remarkEmoji from "remark-emoji";
 import remarkGfm from "remark-gfm";
 import remarkJoinCjkLines from "remark-join-cjk-lines";
 import remarkMath from "remark-math";
@@ -23,6 +24,7 @@ const processor = unified()
     jpg: { webp: "image/webp" },
     png: { webp: "image/webp" },
   })
+  .use(remarkEmoji)
   .use(rehypeKatex)
   .use(rehypeStarryNight)
   .use(rehypeStringify, { allowDangerousHtml: true });
