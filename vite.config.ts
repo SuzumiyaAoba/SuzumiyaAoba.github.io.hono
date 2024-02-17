@@ -1,14 +1,13 @@
-import {globSync} from "glob";
 import devServer from "@hono/vite-dev-server";
 import { defaultOptions } from "@hono/vite-dev-server";
 import ssg from "@hono/vite-ssg";
+import { globSync } from "glob";
 import copy from "rollup-plugin-copy";
 import type { Target } from "rollup-plugin-copy";
 import sharp from "sharp";
 import { defineConfig } from "vite";
 import VitePluginBrowserSync from "vite-plugin-browser-sync";
 import tsconfigPaths from "vite-tsconfig-paths";
-
 
 const imageTarget: (options: {
   src: string;
@@ -37,7 +36,7 @@ export default defineConfig({
     copyPublicDir: true,
     watch: {
       include: "content/**",
-    }
+    },
   },
   plugins: [
     tsconfigPaths(),
@@ -47,13 +46,13 @@ export default defineConfig({
     }),
     VitePluginBrowserSync(),
     {
-      name: 'watch-external',
-      async buildStart(){
+      name: "watch-external",
+      async buildStart() {
         const files = globSync("content/**/*.md");
-        for(let file of files){
+        for (const file of files) {
           this.addWatchFile(file);
         }
-      }
+      },
     },
     copy({
       targets: [

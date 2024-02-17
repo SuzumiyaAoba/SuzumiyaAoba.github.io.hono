@@ -12,6 +12,8 @@ import { globalCss } from "@styles/global";
 import { twindConfig } from "@styles/twind.config";
 import { tailwindStyleTagInjector } from "@styles/twind.ts";
 
+import { metadata } from "@metadata";
+
 const app = new Hono();
 
 app.use("*", tailwindStyleTagInjector(twindConfig));
@@ -21,7 +23,7 @@ app.use("/assets/*", serveStatic({ root: "./public" }));
 app.get("/", async (c) => {
   return c.html(
     <Html globalCss={globalCss}>
-      <Layout>
+      <Layout title={metadata.siteName}>
         <HomePage />
       </Layout>
     </Html>,
@@ -48,7 +50,7 @@ app.get(
 
     return c.html(
       <Html globalCss={globalCss}>
-        <Layout>
+        <Layout title={metadata.siteName}>
           <BlogPostPage id={id} />
         </Layout>
       </Html>,
