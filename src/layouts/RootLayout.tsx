@@ -7,16 +7,15 @@ import { Footer } from "@components/Footer";
 import { Header } from "@components/Header";
 import { GoogleAnalytics } from "@libs/components/GoogleAnalytics";
 import { GoogleFonts } from "@libs/components/GoogleFonts";
-import { KatexCss } from "@libs/components/KatexCss";
-import { LiteYoutube } from "@libs/components/LiteYoutube";
 import { Partytown } from "@libs/components/Partytown";
-import { StarryNightCss } from "@libs/components/StarryNightCss";
 
-export const Layout: FC<
+export const RootLayout: FC<
   PropsWithChildren<{
     title: string;
+    // biome-ignore lint/correctness/noUndeclaredVariables:
+    head?: JSX.Element;
   }>
-> = ({ title, children }) => {
+> = ({ title, head, children }) => {
   return (
     <>
       <head>
@@ -28,13 +27,12 @@ export const Layout: FC<
         {/* CSS */}
         <Style />
         <GoogleFonts fonts={metadata.googleFonts} />
-        <KatexCss />
-        <StarryNightCss />
 
         {/* JavaScript */}
         <Partytown />
         <GoogleAnalytics tagId={metadata.googleAnalytics.tagId} />
-        <LiteYoutube />
+
+        {head}
       </head>
       <body className="flex flex-col min-h-screen">
         <Header siteName={metadata.siteName} />

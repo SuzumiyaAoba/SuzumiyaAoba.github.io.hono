@@ -3,7 +3,8 @@ import { Hono } from "hono";
 import { ssgParams } from "hono/ssg";
 
 import { Html } from "@layouts/Html";
-import { Layout } from "@layouts/Layout";
+import { MarkdownLayout } from "@layouts/MarkdownLayout";
+import { RootLayout } from "@layouts/RootLayout";
 import { BlogPostPage } from "@pages/BlogPostPage";
 import { HomePage } from "@pages/HomePage";
 import * as blog from "@repositories/blog";
@@ -23,9 +24,9 @@ app.use("/assets/*", serveStatic({ root: "./public" }));
 app.get("/", async (c) => {
   return c.html(
     <Html globalCss={globalCss}>
-      <Layout title={metadata.siteName}>
+      <RootLayout title={metadata.siteName}>
         <HomePage />
-      </Layout>
+      </RootLayout>
     </Html>,
   );
 });
@@ -50,9 +51,9 @@ app.get(
 
     return c.html(
       <Html globalCss={globalCss}>
-        <Layout title={metadata.siteName}>
+        <MarkdownLayout title={metadata.siteName}>
           <BlogPostPage id={id} />
-        </Layout>
+        </MarkdownLayout>
       </Html>,
     );
   },
