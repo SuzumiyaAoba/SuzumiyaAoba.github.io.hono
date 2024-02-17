@@ -94,7 +94,7 @@ export const globalCss = css`
   }
 
   blockquote {
-    @apply ml-4 pl-2 py-0.5;
+    @apply my-6 ml-4 pl-2 py-0.5;
     @apply text-sm;
     @apply text-neutral-600;
     @apply border-l-2 border-neutral-500;
