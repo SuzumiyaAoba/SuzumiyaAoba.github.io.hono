@@ -89,6 +89,9 @@
     "preserveSymlinks": true,
 
     /* Completeness */
-    "skipDefaultLibCheck": true,
-  }
+    "skipDefaultLibCheck": true
+  },
+  "exclude": [
+    "public/~partytown"
+  ]
 }
