@@ -10,15 +10,16 @@ import { CalendarDaysIcon } from "@components/icons";
 import { metadata } from "@metadata";
 import * as blog from "@repositories/blog";
 
-export const BlogPostPage: FC<{ id: string }> = async ({ id }) => {
-  const post = await blog.getPost("./content/blog", id);
+export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
+  const post = await blog.getPost("./content/blog", dir);
+  const { year, month, date, id } = post.slug;
   const content = post.content;
 
   return (
     <main className="max-w-3xl w-full px-4 mx-auto mb-12">
       <article class="mb-16">
         <h1 class="flex py-0 my-1 justify-center">
-          <a class="no-underline" href={post.slug}>
+          <a class="no-underline" href={`/blog/${year}/${month}/${date}/${id}/`}>
             {content.frontmatter.title}
           </a>
         </h1>
