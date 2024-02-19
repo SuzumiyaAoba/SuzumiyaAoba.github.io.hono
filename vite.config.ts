@@ -7,6 +7,7 @@ import type { Target } from "rollup-plugin-copy";
 import sharp from "sharp";
 import { defineConfig } from "vite";
 import VitePluginBrowserSync from "vite-plugin-browser-sync";
+import Sitemap from "vite-plugin-sitemap";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const imageTarget: (options: {
@@ -44,6 +45,7 @@ export default defineConfig({
       entry: "src/index.tsx",
       exclude: [/^\/blog\/.+\.(webp|png|jpg|jpeg)$/, ...defaultOptions.exclude],
     }),
+    // @ts-ignore
     VitePluginBrowserSync(),
     {
       name: "watch-external",
@@ -64,5 +66,9 @@ export default defineConfig({
       hook: "options",
     }),
     ssg(),
+    // @ts-ignore
+    Sitemap({
+      hostname: "https://SuzumiyaAoba.github.io/",
+    }),
   ],
 });
