@@ -19,7 +19,9 @@ export const PostListItem: FC<{
             {format(content.frontmatter.created_at, "yyyy/MM/dd")}
           </div>
         </div>
-        <a href={`/blog/${year}/${month}/${date}/${id}/`}>{content.frontmatter.title}</a>
+        <a href={`/blog/${year}/${month}/${date}/${id}/`}>
+          {content.frontmatter.title}
+        </a>
       </div>
     </li>
   );

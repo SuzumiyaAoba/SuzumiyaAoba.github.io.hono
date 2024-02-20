@@ -14,22 +14,33 @@ const imageTarget: (options: {
   src: string;
   width: number;
   format: keyof sharp.FormatEnum;
-}) => Omit<Target, "dest"> = ({ src, width, format }) => ({
-  src,
-  transform: (contents, _filename) => {
-    return sharp(contents).resize(width).toFormat(format).toBuffer();
-  },
-  rename: (name, _extension, _fullPath) => `${name}.${format}`,
-});
+}) => Target[] = ({ src, width, format }) =>
+  globSync(src).map((file) => {
+    const groups = file.match(/content\/blog\/(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>[^/]+)\/images\//)?.groups;
 
-const blogImageTarget: (options: { format: keyof sharp.FormatEnum }) => Target =
-  ({ format }) => ({
-    ...imageTarget({
-      src: "content/**/images/*.{png,jpg,jpeg}",
-      width: 768 * 2,
-      format,
-    }),
-    dest: "public",
+    if (!groups) {
+      throw new Error(`Illegal src: ${src}`);
+    }
+
+    const { year, month, date, id } = groups;
+
+    return {
+      src: file,
+      transform: (contents, _filename) => {
+        return sharp(contents).resize(width).toFormat(format).toBuffer();
+      },
+      rename: (name, _extension, _fullPath) => `${name}.${format}`,
+      dest: `public/blog/${year}/${month}/${date}/${id}/images`,
+    };
+  });
+
+const blogImageTarget: (options: {
+  format: keyof sharp.FormatEnum;
+}) => Target[] = ({ format }) =>
+  imageTarget({
+    src: "content/blog/**/images/*.{png,jpg,jpeg}",
+    width: 768 * 2,
+    format,
   });
 
 export default defineConfig({
@@ -58,10 +69,10 @@ export default defineConfig({
     },
     copy({
       targets: [
-        blogImageTarget({ format: "webp" }),
-        blogImageTarget({ format: "png" }),
+        ...blogImageTarget({ format: "webp" }),
+        ...blogImageTarget({ format: "png" }),
       ],
-      flatten: false,
+      flatten: true,
       verbose: true,
       hook: "options",
     }),

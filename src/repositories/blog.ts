@@ -15,10 +15,30 @@ export type Post = {
   content: Markdown;
 };
 
-const dirFormat = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>.+)/;
+export const dirFormat = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>.+)/;
 
 const isValidPostDir = (dir: string): boolean => {
   return dirFormat.test(dir);
+};
+
+export const dirNameToSlug = (dir: string): {
+  year: string;
+  month: string;
+  date: string;
+  id: string;
+} => {
+  const groups = dir.match(dirFormat)?.groups;
+
+  if (!groups) {
+    throw new Error(`Illegal directory name: ${dir}`);
+  }
+
+  const { year, month, date, id } = groups;
+  if (!year || !month || !date || !id) {
+    throw new Error(`Illegal directory name: ${dir}`);
+  }
+
+  return { year, month, date, id };
 };
 
 const detectMarkdown = (dir: string): string | undefined => {
@@ -46,22 +66,10 @@ export const parsePostDir = async (
   dir: string,
 ): Promise<Post> => {
   const content = await parseMarkdown(path.resolve(root, dir));
-  const groups = dir.match(dirFormat)?.groups;
-
-  if (!groups) {
-    throw new Error(`Illegal directory name: ${dir}`);
-  }
-
-  const { year, month, date, id } = groups;
-  if (!year || !month || !date || !id) {
-    throw new Error(`Illegal directory name: ${dir}`);
-  }
 
   return {
     dir,
-    slug: {
-      year, month, date, id,
-    },
+    slug: dirNameToSlug(dir),
     content: content,
   };
 };
