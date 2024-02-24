@@ -12,14 +12,16 @@ import { Partytown } from "@libs/components/Partytown";
 export const RootLayout: FC<
   PropsWithChildren<{
     title: string;
+    description?: string;
     // biome-ignore lint/correctness/noUndeclaredVariables:
-    head?: JSX.Element;
+    headChildren?: JSX.Element;
   }>
-> = ({ title, head, children }) => {
+> = ({ title, description, headChildren, children }) => {
   return (
     <>
       <head>
         <title>{title}</title>
+        { description ?  <meta name="description">{description}</meta> : <></>}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="generator" content="Hono" />
@@ -32,7 +34,7 @@ export const RootLayout: FC<
         <Partytown />
         <GoogleAnalytics tagId={metadata.googleAnalytics.tagId} />
 
-        {head}
+        {headChildren}
       </head>
       <body className="flex flex-col min-h-screen">
         <Header siteName={metadata.siteName} />

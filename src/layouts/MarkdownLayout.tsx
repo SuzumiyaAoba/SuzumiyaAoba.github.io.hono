@@ -11,7 +11,7 @@ export const MarkdownLayout: FC<
     title: string;
   }>
 > = ({ title, children }) => {
-  const head = (
+  const headChildren = (
     <>
       <KatexCss />
       <StarryNightCss />
@@ -19,7 +19,7 @@ export const MarkdownLayout: FC<
     </>
   );
   return (
-    <RootLayout title={title} head={head}>
+    <RootLayout title={title} headChildren={headChildren}>
       {children}
     </RootLayout>
   );
