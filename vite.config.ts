@@ -24,13 +24,15 @@ const imageTarget: (options: {
 
     const { year, month, date, id } = groups;
 
+    const dest = `blog/${year}/${month}/${date}/${id}/images`;
+
     return {
       src: file,
       transform: (contents, _filename) => {
         return sharp(contents).resize(width).toFormat(format).toBuffer();
       },
       rename: (name, _extension, _fullPath) => `${name}.${format}`,
-      dest: `dist/blog/${year}/${month}/${date}/${id}/images`,
+      dest: [`dist/${dest}`, `public/${dest}`],
     };
   });
 
