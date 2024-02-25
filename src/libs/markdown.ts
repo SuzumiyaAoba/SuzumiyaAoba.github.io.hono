@@ -6,7 +6,6 @@ import rehypeStarryNight from "@microflash/rehype-starry-night";
 import rehypeKatex from "rehype-katex";
 import rehypePicture from "rehype-picture";
 import rehypeStringify from "rehype-stringify";
-import rehypeImgLoad from "rehype-imgload";
 import remarkEmoji from "remark-emoji";
 import remarkGfm from "remark-gfm";
 import remarkJoinCjkLines from "remark-join-cjk-lines";
@@ -24,9 +23,6 @@ const processor = unified()
   .use(rehypePicture, {
     jpg: { webp: "image/webp" },
     png: { webp: "image/webp" },
-  })
-  .use(rehypeImgLoad, {
-    mode: "lazy"
   })
   .use(remarkEmoji)
   .use(rehypeKatex)
