@@ -74,7 +74,7 @@ export default defineConfig({
       ],
       flatten: true,
       verbose: true,
-      hook: "options",
+      hook: "buildStart",
     }),
     ssg(),
     // @ts-ignore
