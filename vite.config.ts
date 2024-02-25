@@ -30,7 +30,7 @@ const imageTarget: (options: {
         return sharp(contents).resize(width).toFormat(format).toBuffer();
       },
       rename: (name, _extension, _fullPath) => `${name}.${format}`,
-      dest: `public/blog/${year}/${month}/${date}/${id}/images`,
+      dest: `dist/blog/${year}/${month}/${date}/${id}/images`,
     };
   });
 
@@ -74,7 +74,6 @@ export default defineConfig({
       ],
       flatten: true,
       verbose: true,
-      hook: "writeBundle",
     }),
     ssg(),
     // @ts-ignore
