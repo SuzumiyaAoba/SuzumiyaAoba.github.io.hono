@@ -74,7 +74,7 @@ export default defineConfig({
       ],
       flatten: true,
       verbose: true,
-      hook: "buildStart",
+      hook: "writeBundle",
     }),
     ssg(),
     // @ts-ignore
