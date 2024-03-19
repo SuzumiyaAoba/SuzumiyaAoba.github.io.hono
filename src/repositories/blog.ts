@@ -4,41 +4,38 @@ import type { Markdown } from "@libs/markdown";
 import * as markdown from "@libs/markdown";
 import { Iterator } from "iterator-helpers-polyfill";
 
+export type PostId = {
+  year: string;
+  month: string;
+  date: string;
+  slug: string;
+};
+
 export type Post = {
   dir: string;
-  slug: {
-    year: string;
-    month: string;
-    date: string;
-    id: string;
-  };
+  id: PostId;
   content: Markdown;
 };
 
-export const dirFormat = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>.+)/;
+export const dirFormat = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<slug>.+)/;
 
 const isValidPostDir = (dir: string): boolean => {
   return dirFormat.test(dir);
 };
 
-export const dirNameToSlug = (dir: string): {
-  year: string;
-  month: string;
-  date: string;
-  id: string;
-} => {
+export const dirNameToSlug = (dir: string): PostId => {
   const groups = dir.match(dirFormat)?.groups;
 
   if (!groups) {
     throw new Error(`Illegal directory name: ${dir}`);
   }
 
-  const { year, month, date, id } = groups;
-  if (!year || !month || !date || !id) {
+  const { year, month, date, slug} = groups;
+  if (!year || !month || !date || !slug) {
     throw new Error(`Illegal directory name: ${dir}`);
   }
 
-  return { year, month, date, id };
+  return { year, month, date, slug};
 };
 
 const detectMarkdown = (dir: string): string | undefined => {
@@ -69,7 +66,7 @@ export const parsePostDir = async (
 
   return {
     dir,
-    slug: dirNameToSlug(dir),
+    id: dirNameToSlug(dir),
     content: content,
   };
 };

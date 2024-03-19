@@ -36,7 +36,7 @@ app.get(
   ssgParams(async () => {
     const posts = await blog.getPosts("./content/blog");
 
-    return posts.map((post) => post.slug).toArray();
+    return posts.map((post) => post.id).toArray();
   }),
   async (c) => {
     const { year, month, date, id } = c.req.param();

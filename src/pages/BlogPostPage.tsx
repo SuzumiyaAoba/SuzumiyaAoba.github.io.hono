@@ -12,7 +12,7 @@ import * as blog from "@repositories/blog";
 
 export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
   const post = await blog.getPost("./content/blog", dir);
-  const { year, month, date, id } = post.slug;
+  const { year, month, date, slug } = post.id;
   const content = post.content;
 
   return (
@@ -21,7 +21,7 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
         <h1 class="flex py-0 my-1 justify-center">
           <a
             class="no-underline"
-            href={`/blog/${year}/${month}/${date}/${id}/`}
+            href={`/blog/${year}/${month}/${date}/${slug}/`}
           >
             {content.frontmatter.title}
           </a>
