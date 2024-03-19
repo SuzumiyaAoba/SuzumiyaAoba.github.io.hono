@@ -17,13 +17,13 @@ export type Post = {
   content: Markdown;
 };
 
-export const dirFormat = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<slug>.+)/;
+const dirFormat = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<slug>.+)/;
 
 const isValidPostDir = (dir: string): boolean => {
   return dirFormat.test(dir);
 };
 
-export const dirNameToSlug = (dir: string): PostId => {
+const dirNameToPostId = (dir: string): PostId => {
   const groups = dir.match(dirFormat)?.groups;
 
   if (!groups) {
@@ -38,18 +38,19 @@ export const dirNameToSlug = (dir: string): PostId => {
   return { year, month, date, slug};
 };
 
-const detectMarkdown = (dir: string): string | undefined => {
-  const indexMd = path.resolve(process.cwd(), dir, "index.md");
-  const indexMdx = path.resolve(process.cwd(), dir, "index.mdx");
-  return fs.existsSync(indexMd)
-    ? indexMd
-    : fs.existsSync(indexMdx)
-      ? indexMdx
+const detectMarkdownPath = (dir: string): string | undefined => {
+  const indexMdPath = path.resolve(process.cwd(), dir, "index.md");
+  const indexMdxPath = path.resolve(process.cwd(), dir, "index.mdx");
+
+  return fs.existsSync(indexMdPath)
+    ? indexMdPath
+    : fs.existsSync(indexMdxPath)
+      ? indexMdxPath
       : undefined;
 };
 
-export const parseMarkdown = async (dir: string): Promise<Markdown> => {
-  const path = detectMarkdown(dir);
+const parseMarkdown = async (dir: string): Promise<Markdown> => {
+  const path = detectMarkdownPath(dir);
 
   if (!path) {
     throw new Error(`Neither index.md nor index.mdx does not exist in ${dir}`);
@@ -58,7 +59,7 @@ export const parseMarkdown = async (dir: string): Promise<Markdown> => {
   return markdown.parseMarkdown(path);
 };
 
-export const parsePostDir = async (
+const parsePostDir = async (
   root: string,
   dir: string,
 ): Promise<Post> => {
@@ -66,12 +67,12 @@ export const parsePostDir = async (
 
   return {
     dir,
-    id: dirNameToSlug(dir),
+    id: dirNameToPostId(dir),
     content: content,
   };
 };
 
-export const getPosts = async (root: string) => {
+const getPosts = async (root: string) => {
   const posts = await Promise.all(
     Iterator.from(fs.readdirSync(root))
       .filter(isValidPostDir)
@@ -82,6 +83,8 @@ export const getPosts = async (root: string) => {
   return Iterator.from(posts).filter((post) => !post.content.frontmatter.draft);
 };
 
-export const getPost = async (root: string, id: string) => {
+const getPost = async (root: string, id: string) => {
   return parsePostDir(root, id);
 };
+
+export { getPosts, getPost };
