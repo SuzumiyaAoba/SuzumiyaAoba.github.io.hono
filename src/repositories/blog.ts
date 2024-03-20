@@ -35,7 +35,7 @@ const dirNameToPostId = (dir: string): PostId => {
     throw new Error(`Illegal directory name: ${dir}`);
   }
 
-  return { year, month, date, slug};
+  return { year, month, date, slug };
 };
 
 const detectMarkdownPath = (dir: string): string | undefined => {

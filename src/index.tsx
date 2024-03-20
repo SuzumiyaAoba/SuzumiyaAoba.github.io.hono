@@ -32,23 +32,23 @@ app.get("/", async (c) => {
 });
 
 app.get(
-  "/blog/:year/:month/:date/:id/",
+  "/blog/:year/:month/:date/:slug/",
   ssgParams(async () => {
     const posts = await blog.getPosts("./content/blog");
 
     return posts.map((post) => post.id).toArray();
   }),
   async (c) => {
-    const { year, month, date, id } = c.req.param();
+    const { year, month, date, slug } = c.req.param();
 
-    if (id === ":id") {
+    if (slug === ":slug") {
       return;
     }
 
     return c.html(
       <Html globalCss={globalCss}>
         <MarkdownLayout title={metadata.siteName}>
-          <BlogPostPage dir={`${year}-${month}-${date}-${id}`} />
+          <BlogPostPage dir={`${year}-${month}-${date}-${slug}`} />
         </MarkdownLayout>
       </Html>,
     );
