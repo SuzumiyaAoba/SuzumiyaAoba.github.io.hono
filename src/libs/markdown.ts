@@ -20,7 +20,9 @@ const processor = unified()
   .use(remarkMath)
   .use(remarkGfm)
   .use(remarkJoinCjkLines)
+  // @ts-ignore
   .use(remarkRehype, { allowDangerousHtml: true })
+  // @ts-ignore
   .use(rehypePicture, {
     jpg: { webp: "image/webp" },
     png: { webp: "image/webp" },

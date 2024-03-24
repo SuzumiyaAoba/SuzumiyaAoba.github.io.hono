@@ -1,13 +1,12 @@
 import type { FC } from "hono/jsx";
 
-import { getPosts } from "@repositories/blog";
+import { org } from "@repositories/post/org";
 import { css } from "@twind/core";
 
 import { PostListItem } from "@components/PostListItem";
 
 export const HomePage: FC = async () => {
-  const posts = (await getPosts("./content/blog"))
-    .toArray()
+  const posts = (await org.getPosts())
     .sort((a, b) => (a.id < b.id ? 1 : -1));
 
   const mainCss = css`

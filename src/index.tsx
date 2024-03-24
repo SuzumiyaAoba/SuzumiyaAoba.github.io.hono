@@ -7,7 +7,7 @@ import { MarkdownLayout } from "@layouts/MarkdownLayout";
 import { RootLayout } from "@layouts/RootLayout";
 import { BlogPostPage } from "@pages/BlogPostPage";
 import { HomePage } from "@pages/HomePage";
-import * as blog from "@repositories/blog";
+import { org } from "@repositories/post/org";
 import { globalCss } from "@styles/global";
 
 import { twindConfig } from "@styles/twind.config";
@@ -34,9 +34,14 @@ app.get("/", async (c) => {
 app.get(
   "/blog/:year/:month/:date/:slug/",
   ssgParams(async () => {
-    const posts = await blog.getPosts("./content/blog");
+    const posts = await org.getPosts();
 
-    return posts.map((post) => post.id).toArray();
+    return posts.map((post) => ({
+      year: post.createdAt.year.toString().padStart(2, "0"),
+      month: post.createdAt.month.toString().padStart(2, "0"),
+      date: post.createdAt.date.toString().padStart(2, "0"),
+      slug: post.slug,
+    }));
   }),
   async (c) => {
     const { year, month, date, slug } = c.req.param();

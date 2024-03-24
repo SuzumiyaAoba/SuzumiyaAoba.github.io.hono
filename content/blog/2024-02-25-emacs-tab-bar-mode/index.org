@@ -1,0 +1,225 @@
+#+title: tab-bar-mode の番号を丸囲み数字にする
+#+date: 2024-02-25
+#+tags[]: Emacs tab-bar-mode
+#+categories[]: Emacs
+#+draft: false
+
+** TL;DL
+
++ =Elscreen= を使っていたユーザはビルトインの =tab-bar-mode= を使おう
++ =init.el= に以下の設定を入れるとタブの数字を丸囲い文字にできる
+  #+HTML: <details>
+  #+HTML:  <summary>init.el</summary>
+  #+begin_src elisp  
+  (use-package tab-bar
+      :custom
+      (tab-bar-new-tab-choice "*scratch*")
+      (tab-bar-select-tab-modifiers '(super))
+      (tab-bar-tab-hints t)
+      (tab-bar-new-button-show nil)
+      (tab-bar-close-button-show nil)
+      (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+      :config
+      (tab-bar-mode +1)
+
+      ;; see: https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
+      (defvar tb/circle-numbers-alist
+        (concat "⓪"
+                "①②③④⑤⑥⑦⑧⑨⑩"
+                "⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳"
+                "㉑㉒㉓㉔㉕㉖㉗㉘㉙㉚"
+                "㉛㉜㉝㉞㉟㊱㊲㊳㊴㊵"
+                "㊶㊷㊸㊹㊺㊻㊼㊽㊾㊿"))
+      (defun tb/tab-bar-tab-name-format-hints (name _tab i)
+        "Show absolute numbers on tabs in the tab bar before the tab name.
+      It has effect when `tab-bar-tab-hints' is non-nil."
+        (if tab-bar-tab-hints
+            (format "%s %s"
+                    (if (< i (length tb/circle-numbers-alist))
+                        (substring tb/circle-numbers-alist i (+ i 1))
+                      (number-to-string i))
+                    name)
+          name))
+      (setq tab-bar-tab-name-format-functions
+            '(tb/tab-bar-tab-name-format-hints
+              tab-bar-tab-name-format-close-button
+              tab-bar-tab-name-format-face)))
+  #+end_src
+  #+HTML: </details>
+
+** Emacs のタブ事情
+
+Emacs にタブを追加する方法はいくつか存在する。
+[[https://github.com/emacs-tw/awesome-emacs?tab=readme-ov-file][awesome-emacs]] で確認すると以下のリストのうち =Elscreen= 以外がリストアップされていた。
+
++ [[https://wikemacs.org/wiki/Elscreen][Elscreen]]
++ [[https://github.com/dholm/tabbar/tree/master][tabbar]]
++ [[https://github.com/manateelazycat/awesome-tab][awesome-tab]]
++ [[https://github.com/ema2159/centaur-tabs][centaur-tabs]]
++ [[https://www.emacswiki.org/emacs/TabBarMode][tab-bar-mode]]
++ [[https://www.emacswiki.org/emacs/TabBarMode][tab-line-mode]]
+
+このうち、ビルトインである =tab-bar-mode= 、 =tab-line-mode= を除くと =centaur-tabs= の GitHub のスターが多い。
+
+[[./images/emacs-tab-star-history.png]]
+
+https://star-history.com/#dholm/tabbar&manateelazycat/awesome-tab&ema2159/centaur-tabs&Date
+
+=centaur-tabs= は =awesome-tab= からのフォークされたパッケージでより多くの機能の実装と継続的なメンテナンスがされている。
+
+** Elscreen
+
+Emacs にタブを追加したいとき、昔では [[https://wikemacs.org/wiki/Elscreen][Elscreen]] と呼ばれるパッケージが使われていた。
+私も昔は =Elscreen= を愛用していましたが、現在では配布元のリンクは切れており、メンテナンスもされておらず、
+awesome-emacs でもリストに挙げられないような存在となってしまっている。
+
+そのため、大学院を卒業した頃に =init.el= の見直しを行ったタイミングで =Elscreen= を使わなくなってしまい、
+業務でも Emacs を使うことがあまりなかったため、その代替を真面目に検討することもせず月日は流れ…。
+最近になりエディタを含む PC の設定ファイルや CLI ツールを見直す機運が高まり、再びここ数ヶ月は Emacs の設定を見直している。
+
+** tab-bar-mode/tab-line-mode
+
+Emacs 27.1 で =tab-bar-mode= と =tab-line-mode= が追加された。
+この二つのモードはいずれも Emacs にタブを導入するが、タブが =frame= に対して設定されるか、
+=window= に対して設定されるかの違いがある。
+この違いについては「[[https://qiita.com/grugrut/items/1df4bdbe1453f4b06fc2][Emacs27で追加されるタブ機能について | Qiita]]」で説明されている。
+
+Elscreen を使っていた人は =tab-bar-mode= の挙動が Elscreen に近くおすすめだ。
+
+** タブ分類
+
+タブを追加するパッケージ・モードは次の要素からなる分類が考えられる。
+
++ タブの表示単位
+  + =window= / =frame= のいずれの単位でタブバーが表示されるか
++ バッファの重複
+  + 同じバッファを複数のタブで開くことができるか
++ バッファのグループ化
+  + 同じモード、プロジェクト単位などでタブがグルーピングされるか
+
+*** タブの表示位置
+
+=window= / =frame= それぞれのタブバーの表示位置をスクリーンショットで確認しよう。
+注意点として =window= / =frame= はいずれか一方だけでなく両方を組み合せて使うこともできる。
+
+**** window
+
+=window= 単位でのタブバー表示では、画面を分割した場合も一番上にのみタグが表示される。
+下のフレームにはタブが表示されていない。
+スクリーンショットは =tab-bar-mode= を有効にしたもの。
+
+[[./images/tab-bar-mode.png]]
+
+**** frame
+
+=frame= 単位でのタブバー表示では、画面分割した場合にフレーム単位でタブバーが表示される。
+スクリーンショットは =centaur-tabs-mode= を有効にしたもの。
+
+[[./images/centaur-tabs.png]]
+
+*** バッファの重複
+
+パッケージによってタブの管理をバッファと直接紐付けているためか、同じバッファを異なるタブで開くことができない。
+=Elscreen= や =tab-bar-mode= では同じバッファを表示する複数のタブを作ることができる。
+
+[[./images/tab-duplicate.png]]
+
+しかし、 =awesome-tab= 、 =centaur-tab= 、 =tabbar.el= 、 =tab-line-mode= のような =frame= にタブバーを表示するような
+パッケージ・モードでは同一のバッファを表示する複数のタブを作ることができない。
+ただし、これは調査不足なだけで実現する方法が存在する可能性はある。
+また、 =frame= にタブを表示するタイプのモードは開いたバッファが自動的にタブとして追加される傾向がある。
+
+*** バッファのグループ
+
+一部パッケージをグループにまとめる機能がある。グループの単位は同じモードのバッファであったり、
+Projectile の Project 単位であったり、ユーザがカスタマイズして定義された単位であったりと様々だ。
+例えば、 =centaur-tabs= のデフォルト設定では以下のように =*buffer-name*= のように
+=*= で囲まれたバッファ (ファイルと対応しないバッファ) を表示したとき
+タブが切り替わって =*= で囲まれたバッファのみが表示されるようになる。
+
+[[./images/centaur-tabs-group.png]]
+
+このようにあるバッファを開いたときに表示されるタブをグルーピングしておける機能がある。
+
+*** 分類表
+
+ここまで紹介した機能について、それぞれのパッケージ・モードが当てはまるのか表にまとめる。
+
+| パッケージ・モード名 | タブの表示単位 | バッファの重複 | バッファのグループ化 |
+|--------------------+--------------+--------------+--------------------|
+| Elscreen           | =window=       | :o:          | :x:                |
+| tabbar             | =frame=        | :x:          | :o:                |
+| awesome-tab        | =frame=        | :x:          | :o:                |
+| centaur-tabs       | =frame=        | :x:          | :o:                |
+| tab-bar-mode       | =window=       | :o:          | :x:                |
+| tab-line-mode      | =frame=        | :x:          | :x:                |
+
+=centaur-tabs= の Issues に =tab-bar-mode= と同じような動作をサポートする Issue が立っているが、
+3 年前止まっているので今後もサポートされる望みは薄そうだ。
+
++ [[https://github.com/ema2159/centaur-tabs/issues/108][Support multi-screen tabs like elscreen. #108]]
+
+表を見てもらうと =Elscreen= ユーザの移行先としては =tab-bar-mode= 一択なのが現状だ。
+
+** tab-bar-mode
+
+そろそろ本題に入ろう。
+記事のタイトルでもある tab-bar-mode のタブ番号を丸囲み数字にするには以下の設定を =init.el= に加えればよい。
+
+#+begin_src elisp
+(use-package tab-bar
+  :custom
+  (tab-bar-new-tab-choice "*scratch*")
+  (tab-bar-select-tab-modifiers '(super))
+  (tab-bar-tab-hints t)
+  (tab-bar-new-button-show nil)
+  (tab-bar-close-button-show nil)
+  (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+  :config
+  (tab-bar-mode +1)
+
+  ;; see: https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
+  (defvar tb/circle-numbers-alist
+    (concat "⓪"
+            "①②③④⑤⑥⑦⑧⑨⑩"
+            "⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳"
+            "㉑㉒㉓㉔㉕㉖㉗㉘㉙㉚"
+            "㉛㉜㉝㉞㉟㊱㊲㊳㊴㊵"
+            "㊶㊷㊸㊹㊺㊻㊼㊽㊾㊿"))
+  (defun tb/tab-bar-tab-name-format-hints (name _tab i)
+    "Show absolute numbers on tabs in the tab bar before the tab name.
+  It has effect when `tab-bar-tab-hints' is non-nil."
+    (if tab-bar-tab-hints
+        (format "%s %s"
+                (if (< i (length tb/circle-numbers-alist))
+                    (substring tb/circle-numbers-alist i (+ i 1))
+                  (number-to-string i))
+                name)
+      name))
+  (setq tab-bar-tab-name-format-functions
+        '(tb/tab-bar-tab-name-format-hints
+          tab-bar-tab-name-format-close-button
+          tab-bar-tab-name-format-face)))
+#+end_src
+
+[[https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/][Add Numbers to Emacs tab-bar-mode Tab Titles for Quick Access]] で紹介されているコードに少しだけ手を加えた設定になっている。
+現実的にタブが 10 を越えることはないように思うが 50 まで対応できる。
+これにより少しは =tab-bar-mode= の見た目が良くなる。
+=tab-bar-mode= のコードを見ていてファイルの拡張子によってアイコンの出し分けもできそうに見えたので、
+=init.el= の見直しが一通り完了したら取り組んでいきたい。
+
+** tabgo
+
+最後に [[https://github.com/isamert/tabgo.el][tabgo]] を紹介。
+このパッケージは =tab-bar-mode= 、 =tab-line-mode= で avy のようにタブを指定することができる。
+
+#+begin_src elisp
+(use-package tabgo
+  :straight (:host github :repo "isamert/tabgo.el")
+  :bind (
+         :prefix-map tab-bar-prefix-map
+         :prefix "C-t"
+         ("C-t" . tabgo)))
+#+end_src
+
+=C-t= を実用的に使える場面がないのでタブ操作のためのプレフィクスに利用しようと思ってる。

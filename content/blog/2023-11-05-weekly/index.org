@@ -1,0 +1,86 @@
+#+title: 週報 2023/10/29 ~ 2023/11/05
+#+date: 2023-11-05
+#+tags[]: 週報
+#+categories[]: 週報
+#+draft: false
+
+** 今週の動画
+
+一時期 YouTube の CM で流れていた気がする P 丸様の MOTTAI。
+P 丸様のライブ映像だとメンタルチェンソーが好きなので来週はそれを貼ろうかな。
+
+#+HTML: <lite-youtube videoid="59dHJiIiPhA"></lite-youtube>
+
+** ガジェット
+
+*** M3
+
+今週一番の出来事は Apple の M3 発表だろうか。
+発表されても MacBook Pro、MacBook Air に M3 は載るが、
+Pro と Max は発表だけに留めて搭載された製品の登場は
+もう少し先になると思っていたから驚いた。
+
+#+HTML: <lite-youtube videoid="ctkW3V0Mh-k"></lite-youtube>
+
+*** HIFIMAN ヘッドフォンアンプ
+
+今週の販売ではないけれど HIFIMAN からハイエンドヘッドホンアンプが発売された。
+
++ [[https://av.watch.impress.co.jp/docs/news/1540747.html][HIFIMANからヘッドフォンアンプ2機種。約40万のフルバランスモデルなど - AV Watch]]
+
+DAC 内蔵アンプと A 級増幅アンプの 2 つとなっており、それぞれ約 20 万、約 40 万。
+両方揃えるのであれば 60 万円だし、先週の週報でも触れた SUSVARA も揃えると 100 万円を越える。
+流石に高すぎるけどいつか買いたいなぁ…。
+
+*** キーケット
+
+キーボードオンリー即売会が 2024/03/02 に開催されるらしい。気になる。
+
++ [[https://www.itmedia.co.jp/news/articles/2311/04/news061.html?utm_source=pocket_reader][日本初のキーボードオンリー即売会「キーボードマーケット トーキョー」開催決定 - ITmedia NEWS]]
+
+** ウェブサービス
+
+*** GitHub
+
+GitHub で複数アカウントが公式にサポートされるようになっていた。
+規約的には GitHub は複数アカウントを認めていなかったが、
+社用で利用するアカウントと個人で利用するようなアカウントの使い分けについては
+問題ないことが公式からお墨付きとなった。
+
++ [[https://docs.github.com/ja/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-personal-account/managing-multiple-accounts][複数のアカウントの管理 - GitHub Docs]]
+
+*** Qobuz
+
+Quobuz が国内でサービス提供するようだ。
+
++ [[https://prtimes.jp/main/html/rd/p/000000003.000087880.html][ハイレゾ音楽ストリーミング・ダウンロード・プラットフォームのパイオニア「Qobuz（コバズ）」が12月に日本上陸決定｜Xandrie Japan株式会社のプレスリリース]]
+
+e-onkyo music と過去に事業提携していたけど、最終的に統合された Qobuz としてサービス提供することになったのだろう。
+
++ [[https://prtimes.jp/main/html/rd/p/000000002.000087880.html][Qobuzとハイレゾ音楽配信サイトe-onkyo musicの今後の展望について｜Xandrie Japan株式会社のプレスリリース]]
+
+** テックブログ
+
+*** [[https://future-architect.github.io/articles/20231101a/?utm_source=pocket_saves][設計ドキュメント腐る問題、Git管理で運用してみた結果 | フューチャー技術ブログ]]
+
+[[https://www.future.co.jp/][フューチャー株式会社]] のドキュメント管理についての記事。
+ドキュメント管理はどこの会社でも悩みの種だよなぁ…。
+私の勤めているところでは、技術職しか GitHub のアカウントを持っていないのも辛い。
+技術的な資料は Git 管理にしていきましょう、という声は上がっているものの、
+ドキュメントに対してあまり工数を割くこともできない現実がある。
+
+** 個人的なできごと
+
++ 新宿御苑にいった
+  + 3 連休に新宿に行ってはいけない (戒め)
+  + 人が多すぎる
++ デラマキシ ザ・ワンパウンダーを食べた
+  + 自分は今肉を食っているということを実感できた
+  + ジャンクフード控えるようにしていたけどかるびが食べている動画を見ておいしそうだったので…
+    + [[https://www.youtube.com/watch?v=vDPAmvvidiM][バーガーキング新作デラマキシ ザ・ワンパウンダーを食べるかるび【赤見かるび切り抜き バーガーキング バーキン デラマキシザワンパウンダー 食レポ】]]
++ [[https://godzilla-movie2023.toho.co.jp/][ゴジラ-1.0]] 見た
+  + ゴジラそんなに見てないので過去作品に比べてどうかはわからないけど面白かった
+  + バルト9 の [[https://www.dolbyjapan.com/dolby-cinema][Dolby Cinema]] で初めて見たけど普通のスクリーンよりよかったと思う
+  + 色彩も通常のスクリーンと比べてはっきりしていたし、音も定位や迫力が感じられた
+  + ただ、音に関しては映画内でこの技術が生かせるような場面は実写映画だと難しいようにも感じた
+  + これは現実世界での収録に関する制限があるのか、立体音響に関してエンジニアの技術が追いついていないのか
