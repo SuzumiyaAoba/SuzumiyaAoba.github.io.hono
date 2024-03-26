@@ -10,6 +10,7 @@ import rehypeKatex from "rehype-katex";
 import rehypePicture from "rehype-picture";
 import rehypeStringify from "rehype-stringify";
 import rehypeImgLoad from "rehype-imgload";
+import rehypeUrlInspector from "@jsdevtools/rehype-url-inspector";
 import remarkEmoji from "remark-emoji";
 import { unified } from "unified";
 
@@ -32,6 +33,16 @@ type Keywords = z.infer<typeof keywordsSchema>;
 const processor = unified()
   .use(uniorgParse)
   .use(uniorg2rehype)
+  .use(rehypeUrlInspector, {
+    inspectEach: ({url, node, propertyName}) => {
+      if (url.startsWith("blog://")) {
+        const [year, month, date, ...slug] = url.slice(7).split("-");
+
+        // @ts-ignore
+        node.properties[propertyName] = `/blog/${year}/${month}/${date}/${slug.join("-")}/`;
+      }
+    },
+  })
   .use(rehypePicture, {
     jpg: { webp: "image/webp" },
     png: { webp: "image/webp" },

@@ -37,7 +37,7 @@ app.get(
     const posts = await org.getPosts();
 
     return posts.map((post) => ({
-      year: post.createdAt.year.toString().padStart(2, "0"),
+      year: post.createdAt.year.toString(),
       month: post.createdAt.month.toString().padStart(2, "0"),
       date: post.createdAt.date.toString().padStart(2, "0"),
       slug: post.slug,
