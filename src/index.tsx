@@ -43,7 +43,7 @@ app.get(
       slug: post.slug,
     }));
   }),
-  (c) => {
+  async (c) => {
     const { year, month, date, slug } = c.req.param();
 
     if (slug === ":slug") {

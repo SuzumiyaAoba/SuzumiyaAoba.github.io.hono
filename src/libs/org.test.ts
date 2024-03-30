@@ -18,5 +18,5 @@ test("uniorg-parse", () => {
 #+TAGS: hello, world
 #+KEYWORDS[]: keyword1 keyword`;
 
-  const _parsed = keywordProcessor.parse(content);
+  keywordProcessor.parse(content);
 });
