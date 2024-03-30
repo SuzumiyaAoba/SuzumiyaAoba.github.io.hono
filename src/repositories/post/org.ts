@@ -1,35 +1,36 @@
-import fs from "fs";
+import fs from "node:fs";
 import { Iterator } from "iterator-helpers-polyfill";
 
 import { parseOrg } from "@libs/org.ts";
-import type { Post, PostRegistory, GetPostsOptions } from "./post.ts";
+import type { GetPostsOptions, Post, PostRegistory } from "./post.ts";
 
 const idRegex = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<slug>.+)/;
 
 class OrgPostRegistory implements PostRegistory {
-
   constructor(private readonly root: string) {
-    console.log("OrgPostRegistory:", root);
+    // Do nothing
   }
 
   async getPosts(options?: GetPostsOptions): Promise<Post[]> {
-    const posts = await Promise.all(Iterator.from(fs.readdirSync(this.root, { withFileTypes: true }))
-      .filter((dirent) => dirent.isDirectory())
-      .filter((dirent) => idRegex.test(dirent.name))
-      .map((dirnet)=> dirnet.name)
-      .map((dirname) => this.getPost(dirname))
-      .filter(async (postPromise) => {
-        const post = await postPromise;
+    const posts = await Promise.all(
+      Iterator.from(fs.readdirSync(this.root, { withFileTypes: true }))
+        .filter((dirent) => dirent.isDirectory())
+        .filter((dirent) => idRegex.test(dirent.name))
+        .map((dirnet) => dirnet.name)
+        .map((dirname) => this.getPost(dirname))
+        .filter(async (postPromise) => {
+          const post = await postPromise;
 
-        if (!post) {
-          return false;
-        }
-        
-        return !options?.draft || !post.draft;
-      })
-      .toArray());
+          if (!post) {
+            return false;
+          }
 
-    return posts.filter((post): post is Post  => post !== undefined) as Post[];
+          return !options?.draft || !post.draft;
+        })
+        .toArray(),
+    );
+
+    return posts.filter((post): post is Post => post !== undefined) as Post[];
   }
 
   async getPost(id: string): Promise<Post | undefined> {

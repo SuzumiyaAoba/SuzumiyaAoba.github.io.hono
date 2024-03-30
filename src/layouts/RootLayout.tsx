@@ -21,7 +21,11 @@ export const RootLayout: FC<
     <>
       <head>
         <title>{title}</title>
-        { description ?  <meta name="description">{description}</meta> : <></>}
+        {description ? (
+          <meta name="description" content={description} />
+        ) : (
+          <></>
+        )}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="generator" content="Hono" />

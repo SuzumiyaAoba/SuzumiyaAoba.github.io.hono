@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import type { Markdown } from "@libs/markdown";
 import * as markdown from "@libs/markdown";
 import { Iterator } from "iterator-helpers-polyfill";
@@ -30,7 +30,7 @@ const dirNameToPostId = (dir: string): PostId => {
     throw new Error(`Illegal directory name: ${dir}`);
   }
 
-  const { year, month, date, slug} = groups;
+  const { year, month, date, slug } = groups;
   if (!year || !month || !date || !slug) {
     throw new Error(`Illegal directory name: ${dir}`);
   }
@@ -49,7 +49,7 @@ const detectMarkdownPath = (dir: string): string | undefined => {
       : undefined;
 };
 
-const parseMarkdown = async (dir: string): Promise<Markdown> => {
+const parseMarkdown = (dir: string): Promise<Markdown> => {
   const path = detectMarkdownPath(dir);
 
   if (!path) {
@@ -59,10 +59,7 @@ const parseMarkdown = async (dir: string): Promise<Markdown> => {
   return markdown.parseMarkdown(path);
 };
 
-const parsePostDir = async (
-  root: string,
-  dir: string,
-): Promise<Post> => {
+const parsePostDir = async (root: string, dir: string): Promise<Post> => {
   const content = await parseMarkdown(path.resolve(root, dir));
 
   return {
@@ -83,7 +80,7 @@ const getPosts = async (root: string) => {
   return Iterator.from(posts).filter((post) => !post.content.frontmatter.draft);
 };
 
-const getPost = async (root: string, id: string) => {
+const getPost = (root: string, id: string) => {
   return parsePostDir(root, id);
 };
 

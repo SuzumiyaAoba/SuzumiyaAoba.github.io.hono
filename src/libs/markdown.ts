@@ -1,12 +1,12 @@
-import fs from "fs";
+import fs from "node:fs";
 import matter from "gray-matter";
 import { z } from "zod";
 
 import rehypeStarryNight from "@microflash/rehype-starry-night";
+import rehypeImgLoad from "rehype-imgload";
 import rehypeKatex from "rehype-katex";
 import rehypePicture from "rehype-picture";
 import rehypeStringify from "rehype-stringify";
-import rehypeImgLoad from "rehype-imgload";
 import remarkEmoji from "remark-emoji";
 import remarkGfm from "remark-gfm";
 import remarkJoinCjkLines from "remark-join-cjk-lines";
@@ -28,7 +28,7 @@ const processor = unified()
     png: { webp: "image/webp" },
   })
   .use(rehypeImgLoad, {
-    mode: "lazy"
+    mode: "lazy",
   })
   .use(remarkEmoji)
   .use(rehypeKatex)

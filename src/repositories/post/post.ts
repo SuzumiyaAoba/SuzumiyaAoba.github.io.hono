@@ -15,14 +15,13 @@ type Post = {
 
 type GetPostsOptions = {
   draft: boolean;
-}
+};
 
 export const DEFAULT_GET_POSTS_OPTIONS: GetPostsOptions = {
   draft: false,
 } as const;
 
 interface PostRegistory {
-
   getPosts(options?: GetPostsOptions): Promise<Post[]>;
 
   getPost(id: string): Promise<Post | undefined>;

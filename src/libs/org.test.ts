@@ -1,8 +1,8 @@
-import { test } from 'vitest';
+import { test } from "vitest";
 
-import uniorg2rehype from "uniorg-rehype";
-import uniorgParse from "uniorg-parse";
 import extractKeywords from "uniorg-extract-keywords";
+import uniorgParse from "uniorg-parse";
+import uniorg2rehype from "uniorg-rehype";
 
 import { unified } from "unified";
 
@@ -17,8 +17,6 @@ test("uniorg-parse", () => {
 #+DATE: 2021-08-24
 #+TAGS: hello, world
 #+KEYWORDS[]: keyword1 keyword`;
-  
-  const parsed = keywordProcessor.parse(content);
 
-  console.log(parsed);
+  const _parsed = keywordProcessor.parse(content);
 });

@@ -6,7 +6,7 @@ import type { Post } from "@repositories/post/post";
 
 export const PostListItem: FC<{
   post: Post;
-}> = async ({ post }) => {
+}> = ({ post }) => {
   const { slug, title } = post;
   const { year, month, date } = post.createdAt;
   const createdAt = new Date(year, month - 1, date);
@@ -16,11 +16,9 @@ export const PostListItem: FC<{
       <div>
         <div className="flex items-center text-sm">
           <CalendarDaysIcon />
-          <div className="ml-1">
-            {format(createdAt, "yyyy/MM/dd")}
-          </div>
+          <div className="ml-1">{format(createdAt, "yyyy/MM/dd")}</div>
         </div>
-        <a href={`/blog/${format(createdAt, 'yyyy/MM/dd')}/${slug}/`}>
+        <a href={`/blog/${format(createdAt, "yyyy/MM/dd")}/${slug}/`}>
           {title}
         </a>
       </div>

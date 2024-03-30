@@ -39,7 +39,9 @@
       "@pages/*": ["src/pages/*"],
       "@repositories/*": ["src/repositories/*"],
       "remark-join-cjk-lines": ["src/types/remark-join-cjk-lines"],
-      "@microflash/rehype-starry-night": ["src/types/@microflash/rehype-starry-night"]
+      "@microflash/rehype-starry-night": [
+        "src/types/@microflash/rehype-starry-night"
+      ]
     },
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
@@ -91,7 +93,5 @@
     /* Completeness */
     "skipDefaultLibCheck": true
   },
-  "exclude": [
-    "public/~partytown"
-  ]
+  "exclude": ["public/~partytown"]
 }

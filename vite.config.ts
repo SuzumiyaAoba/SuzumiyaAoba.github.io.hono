@@ -16,7 +16,9 @@ const imageTarget: (options: {
   format: keyof sharp.FormatEnum;
 }) => Target[] = ({ src, width, format }) =>
   globSync(src).map((file) => {
-    const groups = file.match(/content\/blog\/(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>[^/]+)\/images\//)?.groups;
+    const groups = file.match(
+      /content\/blog\/(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>[^/]+)\/images\//,
+    )?.groups;
 
     if (!groups) {
       throw new Error(`Illegal src: ${src}`);
@@ -62,7 +64,7 @@ export default defineConfig({
     VitePluginBrowserSync(),
     {
       name: "watch-external",
-      async buildStart() {
+      buildStart() {
         const files = globSync("content/**/*.md");
         for (const file of files) {
           this.addWatchFile(file);

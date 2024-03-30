@@ -21,7 +21,7 @@ app.use("*", tailwindStyleTagInjector(twindConfig));
 
 app.use("/assets/*", serveStatic({ root: "./public" }));
 
-app.get("/", async (c) => {
+app.get("/", (c) => {
   return c.html(
     <Html globalCss={globalCss}>
       <RootLayout title={metadata.siteName}>
@@ -43,7 +43,7 @@ app.get(
       slug: post.slug,
     }));
   }),
-  async (c) => {
+  (c) => {
     const { year, month, date, slug } = c.req.param();
 
     if (slug === ":slug") {

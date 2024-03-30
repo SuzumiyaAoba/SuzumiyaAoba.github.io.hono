@@ -6,8 +6,7 @@ import { css } from "@twind/core";
 import { PostListItem } from "@components/PostListItem";
 
 export const HomePage: FC = async () => {
-  const posts = (await org.getPosts())
-    .sort((a, b) => (a.id < b.id ? 1 : -1));
+  const posts = (await org.getPosts()).sort((a, b) => (a.id < b.id ? 1 : -1));
 
   const mainCss = css`
     @apply flex-grow;

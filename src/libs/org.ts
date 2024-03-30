@@ -1,16 +1,16 @@
-import fs from "fs";
+import fs from "node:fs";
 import { z } from "zod";
 
-import uniorg2rehype from "uniorg-rehype";
-import uniorgParse from "uniorg-parse";
 import extractKeywords from "uniorg-extract-keywords";
+import uniorgParse from "uniorg-parse";
+import uniorg2rehype from "uniorg-rehype";
 
+import rehypeUrlInspector from "@jsdevtools/rehype-url-inspector";
 import rehypeStarryNight from "@microflash/rehype-starry-night";
+import rehypeImgLoad from "rehype-imgload";
 import rehypeKatex from "rehype-katex";
 import rehypePicture from "rehype-picture";
 import rehypeStringify from "rehype-stringify";
-import rehypeImgLoad from "rehype-imgload";
-import rehypeUrlInspector from "@jsdevtools/rehype-url-inspector";
 import remarkEmoji from "remark-emoji";
 import { unified } from "unified";
 
@@ -34,12 +34,13 @@ const processor = unified()
   .use(uniorgParse)
   .use(uniorg2rehype)
   .use(rehypeUrlInspector, {
-    inspectEach: ({url, node, propertyName}) => {
+    inspectEach: ({ url, node, propertyName }) => {
       if (url.startsWith("blog://")) {
         const [year, month, date, ...slug] = url.slice(7).split("-");
 
         // @ts-ignore
-        node.properties[propertyName] = `/blog/${year}/${month}/${date}/${slug.join("-")}/`;
+        node.properties[propertyName] =
+          `/blog/${year}/${month}/${date}/${slug.join("-")}/`;
       }
     },
   })
@@ -48,7 +49,7 @@ const processor = unified()
     png: { webp: "image/webp" },
   })
   .use(rehypeImgLoad, {
-    mode: "lazy"
+    mode: "lazy",
   })
   .use(remarkEmoji)
   .use(rehypeKatex)
@@ -72,7 +73,7 @@ const parseKeywords = (content: string): Keywords => {
   if (!Array.isArray(result.children)) {
     throw new Error("Expected children to be an array");
   }
-  
+
   const keywordMap = new Map<string, string>();
   for (const keyword of result.children) {
     if (keyword.type === "keyword") {
