@@ -7,30 +7,35 @@ import type { GetPostsOptions, Post, PostRegistory } from "./post.ts";
 const idRegex = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<slug>.+)/;
 
 class OrgPostRegistory implements PostRegistory {
-  constructor(private readonly root: string) {
-    // Do nothing
+  private readonly root: string;
+
+  constructor(root: string) {
+    this.root = root;
   }
 
   async getPosts(options?: GetPostsOptions): Promise<Post[]> {
-    const posts = await Promise.all(
+    const allPosts = await Promise.all(
       Iterator.from(fs.readdirSync(this.root, { withFileTypes: true }))
         .filter((dirent) => dirent.isDirectory())
         .filter((dirent) => idRegex.test(dirent.name))
         .map((dirnet) => dirnet.name)
-        .map((dirname) => this.getPost(dirname))
-        .filter(async (postPromise) => {
-          const post = await postPromise;
-
-          if (!post) {
-            return false;
-          }
-
-          return !options?.draft || !post.draft;
-        })
+        .map(async (dirname) => await this.getPost(dirname))
         .toArray(),
     );
+    const filteredPosts = allPosts
+      .filter((post) => {
+        if (!post) {
+          return false;
+        }
+        if (options?.draft === true) {
+          return true;
+        }
 
-    return posts.filter((post): post is Post => post !== undefined) as Post[];
+        return !post.draft;
+      })
+      .filter((post): post is Post => post !== undefined);
+
+    return filteredPosts;
   }
 
   async getPost(id: string): Promise<Post | undefined> {

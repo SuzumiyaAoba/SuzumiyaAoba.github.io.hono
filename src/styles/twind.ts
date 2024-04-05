@@ -28,8 +28,8 @@ export const tailwindStyleTagInjector = <
     }
 
     const html = await new Response(c.res.body).text();
-    const inserted_html = inline(html);
+    const insertedHtml = inline(html);
 
-    c.res = new Response(inserted_html, c.res);
+    c.res = new Response(insertedHtml, c.res);
   });
 };

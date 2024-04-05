@@ -41,7 +41,7 @@ export const Giscus: FC<{
       data-lang={lang}
       data-loading="lazy"
       crossorigin="anonymous"
-      async
+      async={true}
     />
   );
 };

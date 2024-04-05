@@ -23,7 +23,11 @@ export const GoogleFonts: FC<{
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" Crossorigin />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        Crossorigin={true}
+      />
       <link
         href={`https://fonts.googleapis.com/css2?${familyQuery}&display=swap`}
         rel="preload"
