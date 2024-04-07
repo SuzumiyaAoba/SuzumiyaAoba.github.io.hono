@@ -8,6 +8,7 @@ export const globalCss = css`
 
   h1 {
     @apply font-black;
+    @apply text-2xl leading-10;
   }
 
   h2, h3, h4, h5, h6 {
@@ -16,26 +17,22 @@ export const globalCss = css`
     @apply mt-8 mb-4;
   }
 
-  h1 {
-    @apply text-2xl leading-10;
-  }
-
   h2 {
     @apply py-2 pl-2;
     @apply text-lg;
-    @apply border-l-4 border-slate-700;
-    @apply bg-slate-300;
+    @apply border-l-4 border-black;
+    @apply bg-gray-300;
   }
 
   h3 {
     @apply font-black text-lg;
-    @apply border-b-2 border-slate-700;
+    @apply border-b-2 border-black;
   }
 
   h4 {
     @apply pl-2;
     @apply font-black text-lg;
-    @apply border-l-4 border-slate-700;
+    @apply border-l-4 border-black;
   }
 
   p {

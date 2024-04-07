@@ -22,7 +22,7 @@ export const HomePage: FC = async () => {
   return (
     <main class={mainCss}>
       <h2>ブログ</h2>
-      <div>
+      <div className="">
         <ul class={postsCss}>
           {posts.map((post) => (
             <PostListItem post={post} />

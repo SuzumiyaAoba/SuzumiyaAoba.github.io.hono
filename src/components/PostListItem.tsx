@@ -12,16 +12,20 @@ export const PostListItem: FC<{
   const createdAt = new Date(year, month - 1, date);
 
   return (
-    <li className="flex mb-8 after:content-['']">
-      <div>
-        <div className="flex items-center text-sm">
-          <CalendarDaysIcon />
-          <div className="ml-1">{format(createdAt, "yyyy/MM/dd")}</div>
-        </div>
-        <a href={`/blog/${format(createdAt, "yyyy/MM/dd")}/${slug}/`}>
+    <li className="flex mb-6 after:content-['']">
+      <a className="w-full no-underline"
+        href={`/blog/${format(createdAt, "yyyy/MM/dd")}/${slug}/`}>
+        <div className="w-full px-4 py-2
+                       border-l-2 border-black
+                       border-y border-y-transparent
+                       hover:border-x-4 hover:border-y hover:border-y-black">
+          <div className="flex items-center text-sm">
+            <CalendarDaysIcon />
+            <div className="ml-1">{format(createdAt, "yyyy/MM/dd")}</div>
+          </div>
           {title}
-        </a>
-      </div>
+        </div>
+      </a>
     </li>
   );
 };
