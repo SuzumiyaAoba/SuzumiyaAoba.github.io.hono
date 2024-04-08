@@ -83,7 +83,8 @@ export const globalCss = css`
 
   :not(pre) > code {
     font-family: "M PLUS 1 Code", monospace;
-    @apply text-pink-600;
+    @apply border-2 border-black border-dashed rounded-md px-1.5 py-0.5;
+    @apply mx-1;
   }
 
   pre code {
