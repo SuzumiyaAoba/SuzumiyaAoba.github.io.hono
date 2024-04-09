@@ -31,7 +31,7 @@ const dirNameToPostId = (dir: string): PostId => {
   }
 
   const { year, month, date, slug } = groups;
-  if (!year || !month || !date || !slug) {
+  if (!(year && month && date && slug)) {
     throw new Error(`Illegal directory name: ${dir}`);
   }
 

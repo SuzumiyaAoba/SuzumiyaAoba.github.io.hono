@@ -12,6 +12,7 @@ import rehypeKatex from "rehype-katex";
 import rehypePicture from "rehype-picture";
 import rehypeStringify from "rehype-stringify";
 import remarkEmoji from "remark-emoji";
+import joinCjkLines from "remark-join-cjk-lines";
 import { unified } from "unified";
 
 type Org = {
@@ -52,6 +53,7 @@ const processor = unified()
     mode: "lazy",
   })
   .use(remarkEmoji)
+  .use(joinCjkLines)
   .use(rehypeKatex)
   .use(rehypeStarryNight)
   .use(rehypeStringify, { allowDangerousHtml: true });

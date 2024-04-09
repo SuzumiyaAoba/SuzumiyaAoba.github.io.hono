@@ -14,21 +14,27 @@ export const HomePage: FC = async () => {
     @apply mx-auto px-4 mb-12;
   `;
 
+  const titleCss = css`
+    font-family: 'Noto Sans JP', sans-serif;
+    @apply text-xl font-bold;
+    @apply bg-transparent border-l-0;
+    @apply mt-0 p-0;
+  `;
+
   const postsCss = css`
     @apply max-w-3xl;
-    @apply px-2 mx-0;
+    @apply px-0 mx-0;
+    @apply grid grid-cols-2 auto-rows-auto gap-x-6;
   `;
 
   return (
     <main class={mainCss}>
-      <h2>ブログ</h2>
-      <div className="">
-        <ul class={postsCss}>
-          {posts.map((post) => (
-            <PostListItem post={post} />
-          ))}
-        </ul>
-      </div>
+      <h2 class={titleCss}>ブログ</h2>
+      <ul class={postsCss}>
+        {posts.map((post) => (
+          <PostListItem post={post} />
+        ))}
+      </ul>
     </main>
   );
 };

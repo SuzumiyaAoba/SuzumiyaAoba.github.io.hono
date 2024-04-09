@@ -3,6 +3,7 @@ import type { FC } from "hono/jsx";
 
 import { CalendarDaysIcon } from "@components/icons";
 import type { Post } from "@repositories/post/post";
+import { NoImageIcon } from "./icons/NoImage";
 
 export const PostListItem: FC<{
   post: Post;
@@ -18,16 +19,23 @@ export const PostListItem: FC<{
         href={`/blog/${format(createdAt, "yyyy/MM/dd")}/${slug}/`}
       >
         <div
-          className="w-full p-4 ml-0.5
-                        border-1 border-l-4 border-black rounded"
+          className="flex flex-col w-full ml-0.5 h-full
+                     border-2 border-black rounded"
         >
-          <div className="flex items-center text-sm">
-            <CalendarDaysIcon />
-            <div className="ml-1 no-underline">
-              {format(createdAt, "yyyy/MM/dd")}
+          <div className="flex justify-center w-full border-b-2 border-black p-2 py-4">
+            <NoImageIcon width="96px" height="96px" />
+          </div>
+          <div className="m-2">
+            <div className="flex items-center">
+              <CalendarDaysIcon />
+              <div className="ml-1 no-underline">
+                {format(createdAt, "yyyy/MM/dd")}
+              </div>
+            </div>
+            <div className="group-hover:underline decoration-dotted font-bold">
+              {title}
             </div>
           </div>
-          <div className="group-hover:underline decoration-dotted">{title}</div>
         </div>
       </a>
     </li>
