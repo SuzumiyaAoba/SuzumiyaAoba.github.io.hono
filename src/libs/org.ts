@@ -26,6 +26,7 @@ const keywordsSchema = z.object({
   title: z.string(),
   date: z.date(),
   tags: z.array(z.string()),
+  categories: z.array(z.string()),
   draft: z.boolean(),
 });
 
@@ -87,6 +88,7 @@ const parseKeywords = (content: string): Keywords => {
     title: keywordMap.get("title") ?? "",
     date: new Date(keywordMap.get("date") ?? ""),
     tags: (keywordMap.get("tags[]") ?? "").split(" ").map((tag) => tag.trim()),
+    categories: (keywordMap.get("categories[]") ?? "").split(" ").map((category) => category.trim()),
     draft: keywordMap.get("draft") === "true",
   };
 

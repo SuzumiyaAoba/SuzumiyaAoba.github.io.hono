@@ -65,8 +65,8 @@ class OrgPostRegistory implements PostRegistory {
         date: org.keywords.date.getDate(),
       },
       draft: org.keywords.draft,
-      categories: [],
       tags: org.keywords.tags,
+      categories: org.keywords.categories,
       html: org.html,
     };
   }

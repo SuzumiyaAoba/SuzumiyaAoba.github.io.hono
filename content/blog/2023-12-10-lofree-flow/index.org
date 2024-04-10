@@ -2,7 +2,7 @@
 #+date: 2023-12-10
 #+tags[]: キーボード
 #+categories[]: キーボード
-#+draft: false
+#+#+draft: false
 
 ** 今年何個目のキーボードだろう…
 

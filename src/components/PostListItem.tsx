@@ -3,12 +3,27 @@ import type { FC } from "hono/jsx";
 
 import { CalendarDaysIcon } from "@components/icons";
 import type { Post } from "@repositories/post/post";
+import { Keyboard } from "./icons/Keyboard";
 import { NoImageIcon } from "./icons/NoImage";
+
+const postIcon = (categories: string[]) => {
+  const width = "96px";
+  const height = "96px";
+
+  for (const category of categories) {
+    switch (category) {
+      case "キーボード":
+        return <Keyboard width={width} height={height} />;
+    }
+  }
+
+  return <NoImageIcon width="96px" height="96px" />;
+};
 
 export const PostListItem: FC<{
   post: Post;
 }> = ({ post }) => {
-  const { slug, title } = post;
+  const { slug, title, categories } = post;
   const { year, month, date } = post.createdAt;
   const createdAt = new Date(year, month - 1, date);
 
@@ -23,7 +38,7 @@ export const PostListItem: FC<{
                      border-2 border-black rounded"
         >
           <div className="flex justify-center w-full border-b-2 border-black p-2 py-4">
-            <NoImageIcon width="96px" height="96px" />
+            {postIcon(categories)}
           </div>
           <div className="m-2">
             <div className="flex items-center">
