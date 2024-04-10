@@ -4,10 +4,13 @@ import type { FC } from "hono/jsx";
 import { CalendarDaysIcon } from "@components/icons";
 import type { Post } from "@repositories/post/post";
 import { Daily } from "./icons/Daily";
-import { Keyboard } from "./icons/Keyboard";
-import { NoImageIcon } from "./icons/NoImage";
-import { Stock } from "./icons/Stock";
 import { Emacs } from "./icons/Emacs";
+import { Keyboard } from "./icons/Keyboard";
+import { Mathematics } from "./icons/Matematics";
+import { Nix } from "./icons/Nix";
+import { NoImageIcon } from "./icons/NoImage";
+import { Programming } from "./icons/Programming";
+import { Stock } from "./icons/Stock";
 
 const postIcon = (categories: string[]) => {
   const width = "96px";
@@ -23,6 +26,12 @@ const postIcon = (categories: string[]) => {
         return <Daily width={width} height={height} />;
       case "Emacs":
         return <Emacs width={width} height={height} />;
+      case "Nix":
+        return <Nix width={width} height={height} />;
+      case "数学":
+        return <Mathematics width={width} height={height} />;
+      case "プログラミング":
+        return <Programming width={width} height={height} />;
     }
   }
 

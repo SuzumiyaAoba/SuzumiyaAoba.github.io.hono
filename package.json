@@ -10,7 +10,7 @@
     "test": "vitest",
     "partytown": "partytown copylib public/~partytown",
     "update": "bunx npm-check-updates",
-    "format": "bunx @biomejs/biome check --apply .",
+    "format": "bunx @biomejs/biome check --apply-unsafe .",
     "lint": "bunx @biomejs/biome check ."
   },
   "dependencies": {
