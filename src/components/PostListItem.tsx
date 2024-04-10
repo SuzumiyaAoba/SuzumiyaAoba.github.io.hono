@@ -56,7 +56,7 @@ export const PostListItem: FC<{
                      border-2 border-black rounded"
         >
           <div className="flex justify-center w-full border-b-2 border-black p-2 py-4">
-            {postIcon(categories)}
+            <div className="group-hover:scale-125">{postIcon(categories)}</div>
           </div>
           <div className="m-2">
             <div className="flex items-center">
