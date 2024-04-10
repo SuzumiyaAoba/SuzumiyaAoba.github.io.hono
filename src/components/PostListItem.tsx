@@ -3,8 +3,11 @@ import type { FC } from "hono/jsx";
 
 import { CalendarDaysIcon } from "@components/icons";
 import type { Post } from "@repositories/post/post";
+import { Daily } from "./icons/Daily";
 import { Keyboard } from "./icons/Keyboard";
 import { NoImageIcon } from "./icons/NoImage";
+import { Stock } from "./icons/Stock";
+import { Emacs } from "./icons/Emacs";
 
 const postIcon = (categories: string[]) => {
   const width = "96px";
@@ -14,6 +17,12 @@ const postIcon = (categories: string[]) => {
     switch (category) {
       case "キーボード":
         return <Keyboard width={width} height={height} />;
+      case "株":
+        return <Stock width={width} height={height} />;
+      case "週報":
+        return <Daily width={width} height={height} />;
+      case "Emacs":
+        return <Emacs width={width} height={height} />;
     }
   }
 

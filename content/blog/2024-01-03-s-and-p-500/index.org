@@ -1,7 +1,7 @@
 #+title: 2024 年の S&P500 見通し
 #+date: 2024-01-03
 #+tags[]: S&P500 投資
-#+categories[]: 投資
+#+categories[]: 株
 #+draft: false
 
 2024 年も始まり資産運用をどうするか悩んでいる。

@@ -88,7 +88,9 @@ const parseKeywords = (content: string): Keywords => {
     title: keywordMap.get("title") ?? "",
     date: new Date(keywordMap.get("date") ?? ""),
     tags: (keywordMap.get("tags[]") ?? "").split(" ").map((tag) => tag.trim()),
-    categories: (keywordMap.get("categories[]") ?? "").split(" ").map((category) => category.trim()),
+    categories: (keywordMap.get("categories[]") ?? "")
+      .split(" ")
+      .map((category) => category.trim()),
     draft: keywordMap.get("draft") === "true",
   };
 

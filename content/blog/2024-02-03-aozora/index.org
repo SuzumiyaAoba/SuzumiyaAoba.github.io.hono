@@ -1,7 +1,7 @@
 #+title: あおぞら銀行の株価下落
 #+date: 2024-02-03
 #+tags[]: 投資 株
-#+categories[]: 投資
+#+categories[]: 株
 #+draft: false
 
 ** TL;DL
