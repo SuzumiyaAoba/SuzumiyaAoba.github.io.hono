@@ -11,12 +11,12 @@ export const HomePage: FC = async () => {
   const mainCss = css`
     @apply flex-grow;
     @apply w-full max-w-3xl;
-    @apply mx-auto px-4 mb-12;
+    @apply mx-auto px-4 mt-8 mb-12;
   `;
 
   const titleCss = css`
     font-family: 'Noto Sans JP', sans-serif;
-    @apply text-xl font-bold;
+    @apply text-2xl font-bold;
     @apply bg-transparent border-l-0;
     @apply mt-0 p-0;
   `;
@@ -29,7 +29,7 @@ export const HomePage: FC = async () => {
 
   return (
     <main class={mainCss}>
-      <h2 class={titleCss}>ブログ</h2>
+      <h2 class={titleCss}>Blog</h2>
       <ul class={postsCss}>
         {posts.map((post) => (
           <PostListItem post={post} />
