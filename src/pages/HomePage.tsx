@@ -24,7 +24,7 @@ export const HomePage: FC = async () => {
   const postsCss = css`
     @apply max-w-3xl;
     @apply px-0 mx-0;
-    @apply grid grid-cols-2 auto-rows-auto gap-x-6;
+    @apply grid grid-cols-2 auto-rows-auto gap-y-6 gap-x-12;
   `;
 
   return (

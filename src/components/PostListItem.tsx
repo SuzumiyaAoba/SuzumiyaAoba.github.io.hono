@@ -13,8 +13,8 @@ import { Programming } from "./icons/Programming";
 import { Stock } from "./icons/Stock";
 
 const postIcon = (categories: string[]) => {
-  const width = "96px";
-  const height = "96px";
+  const width = "128px";
+  const height = "128px";
 
   for (const category of categories) {
     switch (category) {
@@ -58,7 +58,7 @@ export const PostListItem: FC<{
           <div className="flex justify-center w-full border-b-2 border-black p-2 py-4">
             <div className="group-hover:scale-125">{postIcon(categories)}</div>
           </div>
-          <div className="m-2">
+          <div className="m-4">
             <div className="flex items-center">
               <CalendarDaysIcon />
               <div className="ml-1 no-underline">
