@@ -13,8 +13,8 @@ import { Programming } from "./icons/Programming";
 import { Stock } from "./icons/Stock";
 
 const postIcon = (categories: string[]) => {
-  const width = "128px";
-  const height = "128px";
+  const width = "64px";
+  const height = "64px";
 
   for (const category of categories) {
     switch (category) {
@@ -35,7 +35,7 @@ const postIcon = (categories: string[]) => {
     }
   }
 
-  return <NoImageIcon width="96px" height="96px" />;
+  return <NoImageIcon width={width} height={height} />;
 };
 
 export const PostListItem: FC<{
@@ -51,14 +51,11 @@ export const PostListItem: FC<{
         className="w-full no-underline"
         href={`/blog/${format(createdAt, "yyyy/MM/dd")}/${slug}/`}
       >
-        <div
-          className="flex flex-col w-full ml-0.5 h-full
-                     border-2 border-black rounded"
-        >
-          <div className="flex justify-center w-full border-b-2 border-black p-2 py-4">
-            <div className="group-hover:scale-110">{postIcon(categories)}</div>
+        <div className="flex w-full ml-0.5 h-full">
+          <div className="flex-none px-2 pb-4">
+            <div className="group-hover:scale-110 p-3">{postIcon(categories)}</div>
           </div>
-          <div className="m-4">
+          <div className="flex-1 m-2">
             <div className="flex items-center">
               <CalendarDaysIcon />
               <div className="ml-1 no-underline">
