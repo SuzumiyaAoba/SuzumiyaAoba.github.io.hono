@@ -1,5 +1,5 @@
 export const metadata = {
-  siteName: "Doing My Share",
+  siteName: "Less is more",
   copyright: "SuzumiyaAoba",
   social: {
     twitter: "SuzumiyaAoba",
@@ -8,10 +8,10 @@ export const metadata = {
     tagId: "G-Q3Z18PS7B4",
   },
   googleFonts: [
-    { name: "Oswald", weight: [700] },
-    { name: "Noto Serif JP", weight: [400, 700, 900] },
-    { name: "Noto Sans JP", weight: [400, 700, 900] },
+    { name: "Special Elite", weight: [400] },
+    { name: "IBM Plex Sans JP", weight: [400, 700, 900] },
     { name: "M PLUS 1 Code", weight: [400, 700] },
+    { name: "New Tegomin", weight: [400] },
   ],
   giscus: {
     repo: "SuzumiyaAoba/SuzumiyaAoba.github.io",

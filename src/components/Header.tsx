@@ -5,7 +5,7 @@ export const Header: FC<{
   siteName: string;
 }> = (props) => {
   const titleCss = css`
-    font-family: "Oswald", sans-serif;
+    font-family: "Special Elite", system-ui;
     @apply font-bold text-2xl;
     @apply no-underline;
   `;

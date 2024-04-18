@@ -2,7 +2,7 @@ import { css } from "@twind/core";
 
 export const globalCss = css`
   body {
-    font-family: "Noto Serif JP", serif;
+    font-family: "New Tegomin", serif;
     @apply leading-loose;
   }
 
@@ -12,7 +12,6 @@ export const globalCss = css`
   }
 
   h2, h3, h4, h5, h6 {
-    font-family: "Noto Sans JP", sans-serif;
     @apply font-black;
     @apply mt-8 mb-4;
   }
@@ -83,7 +82,6 @@ export const globalCss = css`
 
   :not(pre) > code {
     font-family: "M PLUS 1 Code", monospace;
-    @apply border-2 border-black border-dashed rounded-md px-1.5 py-0.5;
     @apply mx-1;
   }
 
