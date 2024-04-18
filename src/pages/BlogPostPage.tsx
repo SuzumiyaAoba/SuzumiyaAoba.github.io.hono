@@ -25,7 +25,10 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
         <h1 class="flex py-0 my-1 justify-center">
           <a
             class="no-underline"
-            href={`/blog/${format(new Date(year, month - 1, date), "yyyy/MM/dd")}/${slug}/`}
+            href={`/blog/${format(
+              new Date(year, month - 1, date),
+              "yyyy/MM/dd",
+            )}/${slug}/`}
           >
             {post.title}
           </a>
