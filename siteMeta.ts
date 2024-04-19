@@ -8,10 +8,10 @@ export const metadata = {
     tagId: "G-Q3Z18PS7B4",
   },
   googleFonts: [
-    { name: "Special Elite", weight: [400] },
+    { name: "Pacifico", weight: [400] },
     { name: "IBM Plex Sans JP", weight: [400, 700, 900] },
+    { name: "Shippori Mincho", weight: [400, 700, 900] },
     { name: "M PLUS 1 Code", weight: [400, 700] },
-    { name: "New Tegomin", weight: [400] },
   ],
   giscus: {
     repo: "SuzumiyaAoba/SuzumiyaAoba.github.io",

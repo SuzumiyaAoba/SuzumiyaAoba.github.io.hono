@@ -15,7 +15,7 @@ export const HomePage: FC = async () => {
   `;
 
   const titleCss = css`
-    font-family: "Special Elite", system-ui;
+    font-family: "Pacifico", system-ui;
     @apply text-2xl font-bold;
     @apply bg-transparent border-l-0;
     @apply mt-0 p-0;

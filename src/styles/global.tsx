@@ -2,7 +2,7 @@ import { css } from "@twind/core";
 
 export const globalCss = css`
   body {
-    font-family: "New Tegomin", serif;
+    font-family: "Shippori Mincho", serif;
     @apply leading-loose;
   }
 
