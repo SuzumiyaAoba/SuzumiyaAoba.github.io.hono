@@ -16,20 +16,20 @@ export const HomePage: FC = async () => {
 
   const titleCss = css`
     font-family: "Pacifico", system-ui;
-    @apply text-2xl font-bold;
+    @apply text-2xl text-center;
     @apply bg-transparent border-l-0;
-    @apply mt-0 p-0;
+    @apply mb-12 p-0;
   `;
 
   const postsCss = css`
     @apply max-w-3xl;
     @apply px-0 mx-0;
-    @apply grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6;
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
   `;
 
   return (
     <main class={mainCss}>
-      <h2 class={titleCss}>Blog</h2>
+      <h2 class={titleCss}>Posts</h2>
       <ul class={postsCss}>
         {posts.map((post) => (
           <PostListItem post={post} />

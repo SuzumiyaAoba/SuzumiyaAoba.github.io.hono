@@ -20,7 +20,7 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
   const { slug } = post;
 
   return (
-    <main className="max-w-3xl w-full px-4 mx-auto mb-12">
+    <main className="max-w-3xl w-full mx-auto mb-12">
       <article class="mb-16">
         <h1 class="flex py-0 my-1 justify-center">
           <a

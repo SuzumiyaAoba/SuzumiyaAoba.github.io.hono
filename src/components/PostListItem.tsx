@@ -30,21 +30,21 @@ export const PostListItem: FC<{
   const createdAt = new Date(year, month - 1, date);
 
   return (
-    <li className="group flex mb-4 after:content-['']">
+    <li className="group flex after:content-['']">
       <a
         className="w-full no-underline"
         href={`/blog/${format(createdAt, "yyyy/MM/dd")}/${slug}/`}
       >
-        <div className="flex w-full ml-0.5 h-full">
-          <div className="flex-none px-2 pb-4">
-            <div className="group-hover:scale-110 p-3">
+        <div className="flex w-full h-full">
+          <div className="flex-none px-2">
+            <div className="group-hover:scale-110">
               {postIcon(categories)}
             </div>
           </div>
           <div className="flex-1 m-2">
             <div className="flex items-center">
               <CalendarDaysIcon />
-              <div className="ml-1 no-underline">
+              <div className="text-sm ml-1 no-underline font-sans">
                 {format(createdAt, "yyyy/MM/dd")}
               </div>
             </div>
