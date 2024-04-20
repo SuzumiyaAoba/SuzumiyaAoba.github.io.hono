@@ -11,7 +11,7 @@ export const Header: FC<{
   `;
 
   return (
-    <header className="max-w-3xl mx-auto my-2 px-4 w-full">
+    <header className="max-w-3xl mx-auto my-2 w-full">
       <div>
         <a class={titleCss} href="/">
           {props.siteName}

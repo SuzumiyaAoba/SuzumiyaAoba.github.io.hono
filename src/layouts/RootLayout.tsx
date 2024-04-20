@@ -41,9 +41,11 @@ export const RootLayout: FC<
         {headChildren}
       </head>
       <body className="flex flex-col min-h-screen">
-        <Header siteName={metadata.siteName} />
-        {children}
-        <Footer copyright={metadata.copyright} />
+        <div class="px-4">
+          <Header siteName={metadata.siteName} />
+          {children}
+          <Footer copyright={metadata.copyright} />
+        </div>
       </body>
     </>
   );

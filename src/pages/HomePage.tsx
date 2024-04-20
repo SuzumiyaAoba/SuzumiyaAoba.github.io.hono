@@ -11,7 +11,7 @@ export const HomePage: FC = async () => {
   const mainCss = css`
     @apply flex-grow;
     @apply w-full max-w-3xl;
-    @apply mx-auto px-4 mt-8 mb-12;
+    @apply mx-auto mt-8 mb-12;
   `;
 
   const titleCss = css`
@@ -24,7 +24,7 @@ export const HomePage: FC = async () => {
   const postsCss = css`
     @apply max-w-3xl;
     @apply px-0 mx-0;
-    @apply grid grid-cols-2 auto-rows-auto gap-y-4 gap-x-6;
+    @apply grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6;
   `;
 
   return (
