@@ -5,7 +5,7 @@ export const Header: FC<{
   siteName: string;
 }> = (props) => {
   const titleCss = css`
-    font-family: "Pacifico", system-ui;
+    @apply font-display;
     @apply font-bold text-2xl;
     @apply no-underline;
   `;

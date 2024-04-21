@@ -81,7 +81,7 @@ export const globalCss = css`
   }
 
   :not(pre) > code {
-    font-family: "M PLUS 1 Code", monospace;
+    @apply font-mono;
     @apply mx-1;
   }
 
@@ -103,7 +103,7 @@ export const globalCss = css`
   }
 
   .highlight-caption {
-    font-family: "Noto Sans JP", sans-serif;
+    @apply font-sans;
   }
 
   pre {
