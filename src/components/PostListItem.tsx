@@ -30,7 +30,7 @@ export const PostListItem: FC<{
   const createdAt = new Date(year, month - 1, date);
 
   return (
-    <li className="group flex after:content-['']">
+    <li className="group flex after:content-[''] hover:bg-slate-100 rounded-xl p-4">
       <a
         className="w-full no-underline"
         href={`/blog/${format(createdAt, "yyyy/MM/dd")}/${slug}/`}
