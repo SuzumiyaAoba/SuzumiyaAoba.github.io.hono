@@ -5,6 +5,7 @@ import { CalendarDaysIcon } from "@components/icons";
 import type { Post } from "@repositories/post/post";
 import { IconFromText } from "./icons/IconFromText";
 import { NoImageIcon } from "./icons/NoImage";
+import { CalendarDate } from "./CalendarDate";
 
 const postIcon = (categories: string[]) => {
   const width = "64px";
@@ -37,17 +38,10 @@ export const PostListItem: FC<{
       >
         <div className="flex w-full h-full">
           <div className="flex-none px-2">
-            <div className="group-hover:scale-110">
-              {postIcon(categories)}
-            </div>
+            <div className="group-hover:scale-110">{postIcon(categories)}</div>
           </div>
           <div className="flex-1 m-2">
-            <div className="flex items-center">
-              <CalendarDaysIcon />
-              <div className="text-sm ml-1 no-underline font-sans">
-                {format(createdAt, "yyyy/MM/dd")}
-              </div>
-            </div>
+            <CalendarDate date={createdAt} />
             <div className="group-hover:underline decoration-dotted font-bold">
               {title}
             </div>

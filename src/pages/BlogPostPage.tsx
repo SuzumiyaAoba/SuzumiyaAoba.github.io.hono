@@ -10,6 +10,7 @@ import { CalendarDaysIcon } from "@components/icons";
 import { metadata } from "@metadata";
 // import * as blog from "@repositories/blog";
 import { org } from "@repositories/post/org";
+import { CalendarDate } from "@components/CalendarDate";
 
 export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
   const post = await org.getPost(dir);
@@ -33,11 +34,8 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
             {post.title}
           </a>
         </h1>
-        <div class="flex justify-center items-center my-2">
-          <CalendarDaysIcon />
-          <p class="my-0 p-0 ml-1 indent-0">
-            {format(new Date(year, month - 1, date), "yyyy/MM/dd")}
-          </p>
+        <div className="flex justify-center my-2">
+          <CalendarDate date={new Date(year, month - 1, date)} />
         </div>
         <ul class="flex flex-wrap list-none justify-center">
           {post.tags.map((tag) => (
