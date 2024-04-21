@@ -6,9 +6,7 @@ import { format } from "date-fns";
 import { Giscus } from "@libs/components/Giscus";
 
 import { Tag } from "@components/Tag";
-import { CalendarDaysIcon } from "@components/icons";
 import { metadata } from "@metadata";
-// import * as blog from "@repositories/blog";
 import { org } from "@repositories/post/org";
 import { CalendarDate } from "@components/CalendarDate";
 

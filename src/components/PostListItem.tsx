@@ -1,7 +1,6 @@
 import { format } from "date-fns";
 import type { FC } from "hono/jsx";
 
-import { CalendarDaysIcon } from "@components/icons";
 import type { Post } from "@repositories/post/post";
 import { IconFromText } from "./icons/IconFromText";
 import { NoImageIcon } from "./icons/NoImage";
