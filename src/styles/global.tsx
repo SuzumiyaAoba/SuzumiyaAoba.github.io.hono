@@ -2,7 +2,7 @@ import { css } from "@twind/core";
 
 export const globalCss = css`
   body {
-    font-family: "Shippori Mincho", serif;
+    @apply font-serif;
     @apply leading-loose;
   }
 
@@ -11,7 +11,11 @@ export const globalCss = css`
     @apply text-2xl leading-10;
   }
 
-  h2, h3, h4, h5, h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-black;
     @apply mt-8 mb-4;
   }
@@ -51,7 +55,8 @@ export const globalCss = css`
     @apply border border-black;
   }
 
-  ul, ol {
+  ul,
+  ol {
     @apply pl-12;
   }
 
@@ -76,7 +81,8 @@ export const globalCss = css`
     @apply border-y border-black;
   }
 
-  th, td {
+  th,
+  td {
     @apply px-6 py-1;
   }
 
@@ -86,6 +92,7 @@ export const globalCss = css`
   }
 
   pre code {
+    @apply font-mono;
     @apply text-sm;
   }
 
