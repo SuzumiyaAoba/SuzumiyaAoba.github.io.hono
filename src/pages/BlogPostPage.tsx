@@ -5,10 +5,10 @@ import { format } from "date-fns";
 
 import { Giscus } from "@libs/components/Giscus";
 
+import { CalendarDate } from "@components/CalendarDate";
 import { Tag } from "@components/Tag";
 import { metadata } from "@metadata";
 import { org } from "@repositories/post/org";
-import { CalendarDate } from "@components/CalendarDate";
 
 export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
   const post = await org.getPost(dir);

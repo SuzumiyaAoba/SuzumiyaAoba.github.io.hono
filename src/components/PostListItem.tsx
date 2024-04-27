@@ -2,9 +2,9 @@ import { format } from "date-fns";
 import type { FC } from "hono/jsx";
 
 import type { Post } from "@repositories/post/post";
+import { CalendarDate } from "./CalendarDate";
 import { IconFromText } from "./icons/IconFromText";
 import { NoImageIcon } from "./icons/NoImage";
-import { CalendarDate } from "./CalendarDate";
 
 const postIcon = (categories: string[]) => {
   const width = "64px";
