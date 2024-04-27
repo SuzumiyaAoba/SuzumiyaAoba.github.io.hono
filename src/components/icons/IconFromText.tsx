@@ -1,12 +1,12 @@
 import type { FC, PropsWithChildren } from "hono/jsx";
 
-import { Daily } from "./Daily";
-import { Emacs } from "./Emacs";
-import { Keyboard } from "./Keyboard";
-import { Mathematics } from "./Matematics";
-import { Nix } from "./Nix";
-import { Programming } from "./Programming";
-import { Stock } from "./Stock";
+import { Daily } from "./daily";
+import { Emacs } from "./emacs";
+import { Keyboard } from "./keyboard";
+import { Mathematics } from "./mathematics";
+import { Nix } from "./nix";
+import { Programming } from "./programming";
+import { Stock } from "./stock";
 
 export const IconFromText: FC<
   PropsWithChildren<{

@@ -5,8 +5,8 @@ import { format } from "date-fns";
 
 import { Giscus } from "@libs/components/Giscus";
 
-import { CalendarDate } from "@components/CalendarDate";
-import { Tag } from "@components/Tag";
+import { CalendarDate } from "@components/calendar-date";
+import { Tag } from "@components/tag";
 import { metadata } from "@metadata";
 import { org } from "@repositories/post/org";
 
@@ -26,7 +26,7 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
             class="no-underline"
             href={`/blog/${format(
               new Date(year, month - 1, date),
-              "yyyy/MM/dd",
+              "yyyy/MM/dd"
             )}/${slug}/`}
           >
             {post.title}

@@ -3,8 +3,8 @@ import { metadata } from "@metadata";
 import { Style } from "hono/css";
 import type { FC, PropsWithChildren } from "hono/jsx";
 
-import { Footer } from "@components/Footer";
-import { Header } from "@components/Header";
+import { Footer } from "@components/footer";
+import { Header } from "@components/header";
 import { GoogleAnalytics } from "@libs/components/GoogleAnalytics";
 import { GoogleFonts } from "@libs/components/GoogleFonts";
 import { Partytown } from "@libs/components/Partytown";

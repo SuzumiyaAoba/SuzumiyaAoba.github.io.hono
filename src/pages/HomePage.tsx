@@ -3,7 +3,7 @@ import type { FC } from "hono/jsx";
 import { org } from "@repositories/post/org";
 import { css } from "@twind/core";
 
-import { PostListItem } from "@components/PostListItem";
+import { PostListItem } from "@components/post-list-item";
 
 export const HomePage: FC = async () => {
   const posts = (await org.getPosts()).sort((a, b) => (a.id < b.id ? 1 : -1));

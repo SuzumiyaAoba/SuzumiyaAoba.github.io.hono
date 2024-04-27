@@ -85,6 +85,8 @@
     // "declarationDir": "./",                           /* Specify the output directory for generated declaration files. */
     // "preserveValueImports": true,                     /* Preserve unused imported values in the JavaScript output that would otherwise be removed. */
 
+    "forceConsistentCasingInFileNames": true,
+
     /* Interop Constraints */
     "verbatimModuleSyntax": true,
     "allowSyntheticDefaultImports": true,

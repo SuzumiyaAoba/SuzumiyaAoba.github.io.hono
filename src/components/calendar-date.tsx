@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import type { FC } from "hono/jsx";
-import { Time } from "./icons/Time";
+import { Time } from "./icons/time";
 
 export const CalendarDate: FC<{
   date: Date;
