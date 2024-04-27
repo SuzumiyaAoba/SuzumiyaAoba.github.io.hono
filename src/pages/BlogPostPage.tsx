@@ -9,6 +9,7 @@ import { CalendarDate } from "@components/calendar-date";
 import { Tag } from "@components/tag";
 import { metadata } from "@metadata";
 import { org } from "@repositories/post/org";
+import postMarkdownStyle from "@styles/post-markdown";
 
 export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
   const post = await org.getPost(dir);
@@ -21,7 +22,7 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
   return (
     <main className="max-w-3xl w-full mx-auto mb-12">
       <article class="mb-16">
-        <h1 class="flex py-0 my-1 justify-center">
+        <h1 class="flex my-1 justify-center font-black text-2xl">
           <a
             class="no-underline"
             href={`/blog/${format(
@@ -42,7 +43,7 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
             </li>
           ))}
         </ul>
-        <div>{raw(post.html)}</div>
+        <div class={postMarkdownStyle}>{raw(post.html)}</div>
       </article>
       <hr />
       <section class="mt-16">

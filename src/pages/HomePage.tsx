@@ -17,13 +17,11 @@ export const HomePage: FC = async () => {
   const titleCss = css`
     font-family: "Pacifico", system-ui;
     @apply text-2xl text-center;
-    @apply bg-transparent border-l-0;
-    @apply mb-12 p-0;
+    @apply mb-12;
   `;
 
   const postsCss = css`
     @apply max-w-3xl;
-    @apply px-0 mx-0;
     @apply grid grid-cols-1 md:grid-cols-2 gap-8;
   `;
 
