@@ -1,6 +1,6 @@
 import type { FC } from "hono/jsx";
 
-export const LiteYoutube: FC = () => {
+const LiteYoutube: FC = () => {
   return (
     <script
       type="module"
@@ -8,3 +8,5 @@ export const LiteYoutube: FC = () => {
     />
   );
 };
+
+export default LiteYoutube;

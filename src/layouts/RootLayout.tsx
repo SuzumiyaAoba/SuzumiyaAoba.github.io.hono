@@ -5,9 +5,9 @@ import type { FC, PropsWithChildren } from "hono/jsx";
 
 import { Footer } from "@components/footer";
 import { Header } from "@components/header";
-import { GoogleAnalytics } from "@libs/components/GoogleAnalytics";
-import { GoogleFonts } from "@libs/components/GoogleFonts";
-import { Partytown } from "@libs/components/Partytown";
+import GoogleAnalytics from "@libs/components/google-analytics";
+import GoogleFonts from "@libs/components/google-fonts";
+import Partytown from "@libs/components/partytown";
 
 export const RootLayout: FC<
   PropsWithChildren<{

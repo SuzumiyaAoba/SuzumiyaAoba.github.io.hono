@@ -3,7 +3,7 @@ import type { FC } from "hono/jsx";
 
 import type { DeepReadonly } from "ts-essentials";
 
-export const GoogleFonts: FC<{
+const GoogleFonts: FC<{
   fonts: DeepReadonly<
     {
       name: string;
@@ -42,3 +42,5 @@ export const GoogleFonts: FC<{
     </>
   );
 });
+
+export default GoogleFonts;

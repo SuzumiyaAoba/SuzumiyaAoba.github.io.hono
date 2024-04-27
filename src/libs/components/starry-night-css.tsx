@@ -1,6 +1,6 @@
 import type { FC } from "hono/jsx";
 
-export const StarryNightCss: FC = () => {
+const StarryNightCss: FC = () => {
   return (
     <>
       <link rel="stylesheet" href="/assets/css/starry-night/index.css" />
@@ -8,3 +8,5 @@ export const StarryNightCss: FC = () => {
     </>
   );
 };
+
+export default StarryNightCss;

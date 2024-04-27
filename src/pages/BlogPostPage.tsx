@@ -3,7 +3,7 @@ import type { FC } from "hono/jsx";
 
 import { format } from "date-fns";
 
-import { Giscus } from "@libs/components/Giscus";
+import Giscus from "@libs/components/giscus";
 
 import { CalendarDate } from "@components/calendar-date";
 import { Tag } from "@components/tag";

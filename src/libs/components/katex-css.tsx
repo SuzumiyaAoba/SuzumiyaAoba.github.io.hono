@@ -1,6 +1,6 @@
 import type { FC } from "hono/jsx";
 
-export const KatexCss: FC = () => {
+const KatexCss: FC = () => {
   return (
     <link
       rel="stylesheet"
@@ -8,3 +8,5 @@ export const KatexCss: FC = () => {
     />
   );
 };
+
+export default KatexCss;

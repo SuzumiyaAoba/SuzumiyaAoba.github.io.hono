@@ -1,6 +1,6 @@
 import type { FC } from "hono/jsx";
 
-export const Giscus: FC<{
+const Giscus: FC<{
   repo: string;
   repoId: string;
   category: string;
@@ -45,3 +45,5 @@ export const Giscus: FC<{
     />
   );
 };
+
+export default Giscus;

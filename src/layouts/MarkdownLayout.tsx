@@ -1,8 +1,8 @@
 import type { FC, PropsWithChildren } from "hono/jsx";
 
-import { KatexCss } from "@libs/components/KatexCss";
-import { LiteYoutube } from "@libs/components/LiteYoutube";
-import { StarryNightCss } from "@libs/components/StarryNightCss";
+import KatexCss from "@libs/components/katex-css";
+import LiteYoutube from "@libs/components/lite-youtube";
+import StarryNightCss from "@libs/components/starry-night-css";
 
 import { RootLayout } from "./RootLayout";
 
