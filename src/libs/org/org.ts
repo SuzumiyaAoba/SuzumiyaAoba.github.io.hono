@@ -1,11 +1,12 @@
 import fs from "node:fs";
-import { z } from "zod";
 
 import extractKeywords from "uniorg-extract-keywords";
 import uniorgParse from "uniorg-parse";
 import uniorg2rehype from "uniorg-rehype";
 
-import rehypeUrlInspector from "@jsdevtools/rehype-url-inspector";
+import rehypeUrlInspector, {
+  type HtmlElementNode,
+} from "@jsdevtools/rehype-url-inspector";
 import rehypeStarryNight from "@microflash/rehype-starry-night";
 import rehypeImgLoad from "rehype-imgload";
 import rehypeKatex from "rehype-katex";
@@ -15,34 +16,26 @@ import remarkEmoji from "remark-emoji";
 import joinCjkLines from "remark-join-cjk-lines";
 import { unified } from "unified";
 
+type Keywords = Map<string, string>;
+
 type Org = {
   keywords: Keywords;
   content: string;
   html: string;
-  path: string | undefined;
+  path: string;
 };
 
-const keywordsSchema = z.object({
-  title: z.string(),
-  date: z.date(),
-  tags: z.array(z.string()),
-  categories: z.array(z.string()),
-  draft: z.boolean(),
-});
-
-type Keywords = z.infer<typeof keywordsSchema>;
+//
+// Content Processor
+//
 
 const processor = unified()
   .use(uniorgParse)
   .use(uniorg2rehype)
   .use(rehypeUrlInspector, {
     inspectEach: ({ url, node, propertyName }) => {
-      if (url.startsWith("blog://")) {
-        const [year, month, date, ...slug] = url.slice(7).split("-");
-
-        // @ts-ignore
-        node.properties[propertyName] =
-          `/blog/${year}/${month}/${date}/${slug.join("-")}/`;
+      for (const prepareUrl of prepareUrlFuncs) {
+        prepareUrl({ url, node, propertyName });
       }
     },
   })
@@ -58,6 +51,35 @@ const processor = unified()
   .use(rehypeKatex)
   .use(rehypeStarryNight)
   .use(rehypeStringify, { allowDangerousHtml: true });
+
+type InspectEeachParams = {
+  url: string;
+  node: HtmlElementNode;
+  propertyName: string | undefined;
+};
+
+const prepareBlogUrl = ({ url, node, propertyName }: InspectEeachParams) => {
+  if (!(node.properties && propertyName)) {
+    console.error("Invalid parameters for prepareBlogUrl");
+    return;
+  }
+
+  const prefix = "blog://";
+  if (url.startsWith(prefix)) {
+    const [year, month, date, ...slugFragments] = url
+      .slice(prefix.length)
+      .split("-");
+    const slug = slugFragments.join("-");
+
+    node.properties[propertyName] = `/blog/${year}/${month}/${date}/${slug}/`;
+  }
+};
+
+const prepareUrlFuncs = [prepareBlogUrl];
+
+//
+// Keyword Processor
+//
 
 const keywordProcessor = unified()
   .use(uniorgParse)
@@ -84,17 +106,7 @@ const parseKeywords = (content: string): Keywords => {
     }
   }
 
-  const keywords = {
-    title: keywordMap.get("title") ?? "",
-    date: new Date(keywordMap.get("date") ?? ""),
-    tags: (keywordMap.get("tags[]") ?? "").split(" ").map((tag) => tag.trim()),
-    categories: (keywordMap.get("categories[]") ?? "")
-      .split(" ")
-      .map((category) => category.trim()),
-    draft: keywordMap.get("draft") === "true",
-  };
-
-  return keywordsSchema.parse(keywords);
+  return keywordMap;
 };
 
 const parseOrg = async (path: string): Promise<Org> => {
@@ -112,4 +124,4 @@ const parseOrg = async (path: string): Promise<Org> => {
 };
 
 export type { Org, Keywords };
-export { parseOrg };
+export { parseOrg, parseKeywords };

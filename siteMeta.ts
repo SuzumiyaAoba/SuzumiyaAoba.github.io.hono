@@ -12,6 +12,7 @@ export const metadata = {
     { name: "IBM Plex Sans JP", weight: [400, 700, 900] },
     { name: "Shippori Mincho", weight: [400, 700, 900] },
     { name: "M PLUS 1 Code", weight: [400, 700] },
+    { name: "RocknRoll One", weight: [400] },
   ],
   giscus: {
     repo: "SuzumiyaAoba/SuzumiyaAoba.github.io",

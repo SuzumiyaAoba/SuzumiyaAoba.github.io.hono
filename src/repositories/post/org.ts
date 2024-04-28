@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { Iterator } from "iterator-helpers-polyfill";
 
-import { parseOrg } from "@libs/org.ts";
+import { parseOrg } from "@libs/org/blog.ts";
 import type { GetPostsOptions, Post, PostRegistory } from "./post.ts";
 
 const idRegex = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<slug>.+)/;

@@ -14,6 +14,7 @@ export const twindConfig = defineConfig({
     extend: {
       fontFamily: {
         sans: ["'IBM Plex Sans JP'", "sans-serf"],
+        accent: ["'RocknRoll One'", "sans-serif"],
         serif: ["'Shippori Mincho'", "serif"],
         mono: ["'M PLUS 1 Code'", "monospace"],
         display: ["Pacifico", "system-ui"],
