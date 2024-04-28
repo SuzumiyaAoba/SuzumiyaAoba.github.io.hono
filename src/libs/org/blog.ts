@@ -1,6 +1,9 @@
-import fs from "node:fs";
 import { z } from "zod";
-import { parseKeywords } from "./org";
+import { parseKeywords, parseOrg } from "./org";
+
+//
+// Types
+//
 
 type BlogOrg = {
   keywords: BlogKeywords;
@@ -19,6 +22,10 @@ const blogKeywordsSchema = z.object({
 
 type BlogKeywords = z.infer<typeof blogKeywordsSchema>;
 
+//
+// Keyword Processor
+//
+
 const parseBlogKeywords = (rawString: string): BlogKeywords => {
   const keywordMap = parseKeywords(rawString);
 
@@ -35,18 +42,25 @@ const parseBlogKeywords = (rawString: string): BlogKeywords => {
   return blogKeywordsSchema.parse(keywords);
 };
 
-const parseOrg = async (path: string): Promise<BlogOrg> => {
-  const rawString = fs.readFileSync(path).toString("utf8");
-  const org = await parseOrg(rawString);
-  const keywords = parseBlogKeywords(rawString);
+//
+// Parser
+//
+
+const parseBlogOrg = async (path: string): Promise<BlogOrg> => {
+  const org = await parseOrg(path);
+  const keywords = parseBlogKeywords(org.content);
 
   return {
     keywords,
-    content: rawString,
+    content: org.content,
     html: org.html,
     path,
   };
 };
 
-export type { BlogOrg as Org, BlogKeywords as Keywords };
-export { parseOrg };
+//
+// exports
+//
+
+export type { BlogOrg, BlogKeywords };
+export { parseBlogOrg };

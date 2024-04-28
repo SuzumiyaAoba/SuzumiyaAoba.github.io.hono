@@ -16,6 +16,10 @@ import remarkEmoji from "remark-emoji";
 import joinCjkLines from "remark-join-cjk-lines";
 import { unified } from "unified";
 
+//
+// Types
+//
+
 type Keywords = Map<string, string>;
 
 type Org = {
@@ -122,6 +126,10 @@ const parseOrg = async (path: string): Promise<Org> => {
     path,
   };
 };
+
+//
+// exports
+//
 
 export type { Org, Keywords };
 export { parseOrg, parseKeywords };

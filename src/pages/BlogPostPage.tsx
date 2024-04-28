@@ -8,11 +8,11 @@ import Giscus from "@libs/components/giscus";
 import { CalendarDate } from "@components/calendar-date";
 import { Tag } from "@components/tag";
 import { metadata } from "@metadata";
-import { org } from "@repositories/post/org";
-import postMarkdownStyle from "@styles/post-markdown";
+import { orgPosts } from "@repositories/post/org";
+import postMarkdownStyle from "@styles/markdown";
 
 export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
-  const post = await org.getPost(dir);
+  const post = await orgPosts.getPost(dir);
   if (!post) {
     return <div>404 Not Found</div>;
   }

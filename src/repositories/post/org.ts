@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { Iterator } from "iterator-helpers-polyfill";
 
-import { parseOrg } from "@libs/org/blog.ts";
+import { parseBlogOrg } from "@libs/org/blog.ts";
 import type { GetPostsOptions, Post, PostRegistory } from "./post.ts";
 
 const idRegex = /(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<slug>.+)/;
@@ -44,7 +44,7 @@ class OrgPostRegistory implements PostRegistory {
     }
 
     const path = `${this.root}/${id}/index.org`;
-    const org = await parseOrg(path);
+    const org = await parseBlogOrg(path);
 
     const groups = id.match(idRegex)?.groups;
     if (!groups) {
@@ -72,6 +72,6 @@ class OrgPostRegistory implements PostRegistory {
   }
 }
 
-const org = new OrgPostRegistory(`${process.cwd()}/content/blog`);
+const orgPosts = new OrgPostRegistory(`${process.cwd()}/content/blog`);
 
-export { org, OrgPostRegistory };
+export { orgPosts, OrgPostRegistory };

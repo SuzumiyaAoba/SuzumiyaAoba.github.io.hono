@@ -27,4 +27,8 @@ interface PostRegistory {
   getPost(id: string): Promise<Post | undefined>;
 }
 
+//
+// exports
+//
+
 export type { Post, PostRegistory, GetPostsOptions };

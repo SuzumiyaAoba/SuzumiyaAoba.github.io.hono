@@ -132,7 +132,7 @@ export default defineConfig({
 
 このサイトでは以下のようなディレクトリ構造で管理している。
 
-#+begin_src plain
+#+begin_src markdown
 .
 ├── content
 │   └── blog

@@ -7,7 +7,7 @@ import { MarkdownLayout } from "@layouts/MarkdownLayout";
 import { RootLayout } from "@layouts/RootLayout";
 import { BlogPostPage } from "@pages/BlogPostPage";
 import { HomePage } from "@pages/HomePage";
-import { org } from "@repositories/post/org";
+import { orgPosts } from "@repositories/post/org";
 import { globalCss } from "@styles/global";
 
 import { twindConfig } from "@styles/twind.config";
@@ -15,6 +15,8 @@ import { tailwindStyleTagInjector } from "@styles/twind.ts";
 
 import { metadata } from "@metadata";
 import { NotesPage } from "@pages/NotesPage";
+import { orgNotes } from "@repositories/note/org";
+import { NotePage } from "@pages/NotePage";
 
 const app = new Hono();
 
@@ -43,9 +45,42 @@ app.get("/notes/", async (c) => {
 });
 
 app.get(
+  "/notes/:category/:slug/",
+  ssgParams(async () => {
+    const categories = await orgNotes.getCategories();
+
+    const promises = categories.flatMap(async (category) => {
+      const notes = await orgNotes.getNotes(category);
+
+      return notes.map((note) => ({
+        category,
+        slug: note.slug,
+      }));
+    });
+
+    return (await Promise.all(promises)).flat();
+  }),
+  async (c) => {
+    const { category, slug } = c.req.param();
+
+    if (category === ":category" || slug === ":slug") {
+      return;
+    }
+
+    return c.html(
+      <Html globalCss={globalCss}>
+        <MarkdownLayout title={metadata.siteName}>
+          <NotePage category={category} id={slug} />
+        </MarkdownLayout>
+      </Html>
+    );
+  }
+);
+
+app.get(
   "/blog/:year/:month/:date/:slug/",
   ssgParams(async () => {
-    const posts = await org.getPosts();
+    const posts = await orgPosts.getPosts();
 
     return posts.map((post) => ({
       year: post.createdAt.year.toString(),
