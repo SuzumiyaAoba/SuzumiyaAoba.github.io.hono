@@ -134,14 +134,14 @@
 
 *** Herb Garden Keycap Set
 
-+ 遊舎工房 :: https://shop.yushakobo.jp/products/5684?_pos=1&_sid=f3d5a6046&_ss=r&_fid=b6588e91d
++ 遊舎工房 :: https://shop.yushakobo.jp/products/5684
 + 素材 :: PBT
 + プロファイル :: OSA
 + 印字方式 :: ダブルショット
 
 *** QX Carmine Cloud Keycapset
 
-+ 遊舎工房 :: https://shop.yushakobo.jp/products/6969?_pos=39&_fid=c6814e584&_ss=c
++ 遊舎工房 :: https://shop.yushakobo.jp/products/6969
 + 素材 :: PBT
 + プロファイル :: Cherry
 + 印字方式 :: 昇華印刷
