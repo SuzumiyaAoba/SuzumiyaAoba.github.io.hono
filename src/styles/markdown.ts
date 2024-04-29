@@ -35,6 +35,7 @@ export default css`
 
   a {
     @apply underline underline-offset-4;
+    @apply break-all;
     @apply decoration-dotted hover:decoration-solid;
   }
 
@@ -56,6 +57,14 @@ export default css`
 
   ol {
     @apply list-decimal;
+  }
+
+  dl {
+    @apply ml-4;
+  }
+
+  dt {
+    @apply font-bold;
   }
 
   table {
