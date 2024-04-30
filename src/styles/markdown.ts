@@ -88,6 +88,7 @@ export default css`
   :not(pre) > code {
     @apply font-mono;
     @apply mx-1;
+    @apply text-pink-500;
   }
 
   pre code {
