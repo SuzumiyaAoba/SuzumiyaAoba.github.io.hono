@@ -7,7 +7,7 @@ import { PostListItem } from "@components/post-list-item";
 
 export const HomePage: FC = async () => {
   const posts = (await orgPosts.getPosts()).sort((a, b) =>
-    a.id < b.id ? 1 : -1,
+    a.id < b.id ? 1 : -1
   );
 
   const mainCss = css`
@@ -17,7 +17,7 @@ export const HomePage: FC = async () => {
   `;
 
   const titleCss = css`
-    font-family: "Pacifico", system-ui;
+    @apply font-display;
     @apply text-2xl text-center;
     @apply mb-12;
   `;

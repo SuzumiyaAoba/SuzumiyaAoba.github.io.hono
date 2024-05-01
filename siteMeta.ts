@@ -9,7 +9,7 @@ export const metadata = {
   },
   googleFonts: [
     { name: "Pacifico", weight: [400] },
-    { name: "IBM Plex Sans JP", weight: [400, 700, 900] },
+    { name: "Noto Sans JP", weight: [300, 400, 700, 900] },
     { name: "Shippori Mincho", weight: [400, 700, 900] },
     { name: "M PLUS 1 Code", weight: [400, 700] },
     { name: "RocknRoll One", weight: [400] },

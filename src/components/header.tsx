@@ -18,12 +18,16 @@ export const Header: FC<{
         </a>
       </div>
       <nav className="hidden sm:block font-accent my-auto">
-        <ul class="flex gap-x-8 list-none">
+        <ul class="flex gap-x-8 list-none pl-0">
           <li>
-            <a href="/">Home</a>
+            <a className="no-underline" href="/">
+              Home
+            </a>
           </li>
           <li>
-            <a href="/notes/">Notes</a>
+            <a className="no-underline" href="/notes/">
+              Notes
+            </a>
           </li>
         </ul>
       </nav>
