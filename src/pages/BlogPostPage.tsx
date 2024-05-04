@@ -27,7 +27,7 @@ export const BlogPostPage: FC<{ dir: string }> = async ({ dir }) => {
             class="no-underline"
             href={`/blog/${format(
               new Date(year, month - 1, date),
-              "yyyy/MM/dd"
+              "yyyy/MM/dd",
             )}/${slug}/`}
           >
             {post.title}

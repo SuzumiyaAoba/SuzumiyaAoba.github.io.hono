@@ -14,9 +14,9 @@ import { twindConfig } from "@styles/twind.config";
 import { tailwindStyleTagInjector } from "@styles/twind.ts";
 
 import { metadata } from "@metadata";
+import { NotePage } from "@pages/NotePage";
 import { NotesPage } from "@pages/NotesPage";
 import { orgNotes } from "@repositories/note/org";
-import { NotePage } from "@pages/NotePage";
 
 const app = new Hono();
 
@@ -30,7 +30,7 @@ app.get("/", (c) => {
       <RootLayout title={metadata.siteName}>
         <HomePage />
       </RootLayout>
-    </Html>
+    </Html>,
   );
 });
 
@@ -40,7 +40,7 @@ app.get("/notes/", async (c) => {
       <RootLayout title="Notes">
         <NotesPage />
       </RootLayout>
-    </Html>
+    </Html>,
   );
 });
 
@@ -72,9 +72,9 @@ app.get(
         <MarkdownLayout title={metadata.siteName}>
           <NotePage category={category} id={slug} />
         </MarkdownLayout>
-      </Html>
+      </Html>,
     );
-  }
+  },
 );
 
 app.get(
@@ -101,9 +101,9 @@ app.get(
         <MarkdownLayout title={metadata.siteName}>
           <BlogPostPage dir={`${year}-${month}-${date}-${slug}`} />
         </MarkdownLayout>
-      </Html>
+      </Html>,
     );
-  }
+  },
 );
 
 export default app;

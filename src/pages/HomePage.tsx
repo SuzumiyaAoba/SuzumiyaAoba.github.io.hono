@@ -7,7 +7,7 @@ import { PostListItem } from "@components/post-list-item";
 
 export const HomePage: FC = async () => {
   const posts = (await orgPosts.getPosts()).sort((a, b) =>
-    a.id < b.id ? 1 : -1
+    a.id < b.id ? 1 : -1,
   );
 
   const mainCss = css`
@@ -24,7 +24,7 @@ export const HomePage: FC = async () => {
 
   const postsCss = css`
     @apply max-w-3xl;
-    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-8;
   `;
 
   return (

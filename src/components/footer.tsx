@@ -1,4 +1,11 @@
+import { css } from "@twind/core";
 import type { FC } from "hono/jsx";
+
+const style = css`
+  @apply w-auto my-8;
+  @apply text-center;
+  @apply font-light text-sm;
+`;
 
 export const Footer: FC<{
   copyright: string;
@@ -6,7 +13,7 @@ export const Footer: FC<{
   const date = new Date();
 
   return (
-    <footer className="w-auto mx-auto my-8 text-center">
+    <footer class={style}>
       <div>
         &copy; {date.getFullYear()} {copyright}
       </div>
