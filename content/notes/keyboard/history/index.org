@@ -96,6 +96,14 @@
   + 専用ケース付き
   + ホットスワップ対応
 
+** ケース
+
+*** Corchim
+
++ 公式ページ :: https://kbd.arashike.com/corchim
++ キーボード :: Corne keyboard
++ 素材 :: アルミニウム
+
 ** キースイッチ
 
 *** Everglide Sakura Pink V2 37g
@@ -123,6 +131,16 @@
 + Keychron :: https://keychron.co.jp/products/kailh-deep-sea-silent-pro-box-switch?variant=42735721611435
 + 軸 :: リニア
 
+*** Roller Liner Switches
+
++ 遊舎工房 :: https://shop.yushakobo.jp/products/9174
++ 軸 :: リニア
+
+*** WS POM+
+
++ 遊舎工房 :: https://shop.yushakobo.jp/products/9033
++ 軸 :: リニア
+
 ** キーキャップ
 
 *** Acid Caps "Standard" Gray on White
@@ -145,3 +163,17 @@
 + 素材 :: PBT
 + プロファイル :: Cherry
 + 印字方式 :: 昇華印刷
+
+*** Acid Caps "Collection" soap bubble
+
++ BOOTH :: https://salicylic-acid3.booth.pm/items/5178536
++ 素材 :: PBT
++ プロファイル :: Cherry
++ 印字方式 :: 昇華印刷
+
+*** XVX Skyline R2 - Low Profile PBT Double-shot Keycap BOW
+
++ XVX :: https://www.xvxchannel.com/products/xvx-skyline-r2?_pos=1
++ 素材 :: PBT
++ プロファイル :: Low Profile (Uniform profile)
++ 印字方式 :: ダブルショット
