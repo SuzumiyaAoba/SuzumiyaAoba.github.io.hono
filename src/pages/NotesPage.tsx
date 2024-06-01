@@ -4,7 +4,9 @@ import type { FC } from "hono/jsx";
 
 const style = css`
   main {
-    @apply flex flex-col max-w-3xl w-full mx-auto mt-8;
+    @apply flex-grow;
+    @apply w-full max-w-3xl;
+    @apply mx-auto mt-8 mb-12;
   }
 
   h1 {

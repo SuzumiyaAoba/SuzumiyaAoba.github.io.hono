@@ -16,7 +16,7 @@ export const NotePage: FC<{
   }
 
   return (
-    <main className="max-w-3xl mx-auto my-2 w-full">
+    <main className="flex-grow w-full max-w-3xl mx-auto mt-8 mb-12">
       <article class="mb-16">
         <h1 class="flex my-8 justify-center font-black text-2xl">
           <a class="no-underline" href={`/notes/${category}/${id}/`}>
