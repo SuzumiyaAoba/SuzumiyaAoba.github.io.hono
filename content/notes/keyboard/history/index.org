@@ -96,6 +96,15 @@
   + 専用ケース付き
   + ホットスワップ対応
 
+*** O51Go
+
++ BOOTH :: https://salicylic-acid3.booth.pm/items/5528153
++ ビルドガイド :: https://salicylic-acid3.hatenablog.com/entry/go40keeb-build-guide
++ 特徴 ::
+  + 51キー
+  + オーソリニア
+  + はんだ付け不要
+
 ** ケース
 
 *** Corchim
