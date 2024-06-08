@@ -1,0 +1,15 @@
+:root {
+  /* light theme variables specific to rehype-starry-night plugin */
+  --hl-background-color: hsl(0, 0%, 100%);
+  --hl-border-color: hsl(208, 21%, 86%);
+  --hl-code-highlight: hsl(208, 19%, 82%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* dark theme variables specific to rehype-starry-night plugin */
+    --hl-background-color: hsl(240, 20%, 2%);
+    --hl-border-color: hsl(208, 21%, 12%);
+    --hl-code-highlight: hsl(208, 19%, 13%);
+  }
+}
