@@ -16,6 +16,10 @@ export const MarkdownLayout: FC<
       <KatexCss />
       <StarryNightCss />
       <LiteYoutube />
+      <link
+        rel="stylesheet"
+        href="https://esm.sh/@wooorm/starry-night@3/style/both"
+      />
     </>
   );
   return (
