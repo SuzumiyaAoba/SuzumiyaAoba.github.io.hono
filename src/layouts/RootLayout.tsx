@@ -13,7 +13,7 @@ export const RootLayout: FC<
   PropsWithChildren<{
     title: string;
     description?: string;
-    // biome-ignore lint/correctness/noUndeclaredVariables:
+    // @ts-ignore
     headChildren?: JSX.Element;
   }>
 > = ({ title, description, headChildren, children }) => {
