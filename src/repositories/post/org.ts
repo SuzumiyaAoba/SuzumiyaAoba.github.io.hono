@@ -72,6 +72,6 @@ class OrgPostRegistory implements PostRegistory {
   }
 }
 
-const orgPosts = new OrgPostRegistory(`${process.cwd()}/content/blog`);
+const orgPosts = new OrgPostRegistory(`${process.cwd()}/contents/org/blog`);
 
 export { orgPosts, OrgPostRegistory };

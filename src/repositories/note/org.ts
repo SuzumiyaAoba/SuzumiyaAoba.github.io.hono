@@ -57,6 +57,6 @@ class OrgNoteRegistry implements NoteRegistory {
   }
 }
 
-const orgNotes = new OrgNoteRegistry(`${process.cwd()}/content/notes`);
+const orgNotes = new OrgNoteRegistry(`${process.cwd()}/contents/org/notes`);
 
 export { orgNotes, OrgNoteRegistry };

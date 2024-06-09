@@ -22,6 +22,7 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+          submodule: recursive
 
       - name: Install Node.js
         uses: actions/setup-node@v3

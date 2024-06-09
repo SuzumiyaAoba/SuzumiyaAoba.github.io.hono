@@ -17,7 +17,7 @@ const imageTarget: (options: {
 }) => Target[] = ({ src, width, format }) =>
   globSync(src).map((file) => {
     const groups = file.match(
-      /content\/blog\/(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>[^/]+)\/images\//,
+      /contents\/org\/blog\/(?<year>\d+)-(?<month>\d+)-(?<date>\d+)-(?<id>[^/]+)\/images\//,
     )?.groups;
 
     if (!groups) {
@@ -42,7 +42,7 @@ const blogImageTarget: (options: {
   format: keyof sharp.FormatEnum;
 }) => Target[] = ({ format }) =>
   imageTarget({
-    src: "content/blog/**/images/*.{png,jpg,jpeg}",
+    src: "contents/org/blog/**/images/*.{png,jpg,jpeg}",
     width: 768 * 2,
     format,
   });
@@ -86,3 +86,4 @@ export default defineConfig({
     }),
   ],
 });
+
